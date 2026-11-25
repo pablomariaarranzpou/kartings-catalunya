@@ -30,3 +30,18 @@ git add -A && git commit -m "Actualiza precios" && git push
 ## Aviso
 
 Precios orientativos recopilados de fuentes públicas; pueden cambiar sin aviso. Esta web no tiene relación con ningún karting.
+
+## Cuando compres kartings.cat
+
+No lo actives antes: si el CNAME apunta a un dominio que aún no resuelve, la web deja de verse.
+
+1. En el registrador del dominio (DNS de `kartings.cat`), crea estos registros:
+   - `A` @ → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - `AAAA` @ → `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
+   - `CNAME` www → `pablomariaarranzpou.github.io`
+2. En `src/build.py` cambia `BASE` a `"https://kartings.cat/"`, ejecuta `python src/build.py`
+   y crea el archivo `CNAME` en la raíz con una sola línea: `kartings.cat`.
+3. Haz commit y push. En GitHub → Settings → Pages, comprueba que el dominio es `kartings.cat`
+   y marca **Enforce HTTPS** cuando GitHub termine de emitir el certificado.
+4. En Google Search Console añade la propiedad de dominio `kartings.cat` y envía
+   `https://kartings.cat/sitemap.xml`.

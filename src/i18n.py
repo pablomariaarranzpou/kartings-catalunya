@@ -525,7 +525,7 @@ AREA_TXT = {
 UI["es"].update(
     grp_prov="Provincias", grp_area="Zonas", areas_title="Busca por zona", other_areas="Otras zonas",
     crumb_home="Kartings en Cataluña",
-    area_title="Karting {h1in}: precios 2026, tandas y carreras | karting.cat",
+    area_title="Karting {h1in}: precios 2026, tandas y carreras | kartings.cat",
     area_h1="Karting {h1in}",
     area_desc="{n} kartings {in_} con precios oficiales de 2026: tandas desde {p}{race}. Compara €/minuto, nota en Google y distancia.",
     area_desc_race=", carreras con quali desde {r} por persona",
@@ -545,7 +545,7 @@ UI["es"].update(
 UI["ca"].update(
     grp_prov="Províncies", grp_area="Zones", areas_title="Cerca per zona", other_areas="Altres zones",
     crumb_home="Kàrtings a Catalunya",
-    area_title="Kàrting {h1in}: preus 2026, tandes i curses | karting.cat",
+    area_title="Kàrting {h1in}: preus 2026, tandes i curses | kartings.cat",
     area_h1="Kàrting {h1in}",
     area_desc="{n} kàrtings {in_} amb preus oficials de 2026: tandes des de {p}{race}. Compara €/minut, nota a Google i distància.",
     area_desc_race=", curses amb quali des de {r} per persona",
@@ -565,7 +565,7 @@ UI["ca"].update(
 UI["en"].update(
     grp_prov="Provinces", grp_area="Areas", areas_title="Browse by area", other_areas="Other areas",
     crumb_home="Go-karting in Catalonia",
-    area_title="Go-karting {h1in}: 2026 prices, sessions and races | karting.cat",
+    area_title="Go-karting {h1in}: 2026 prices, sessions and races | kartings.cat",
     area_h1="Go-karting {h1in}",
     area_desc="{n} go-kart tracks {in_} with official 2026 prices: sessions from {p}{race}. Compare €/minute, Google rating and distance.",
     area_desc_race=", races with qualifying from {r} per person",

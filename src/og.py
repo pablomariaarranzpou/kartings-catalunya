@@ -30,8 +30,8 @@ for lang, (title, sub, provs, date) in TEXT.items():
     im = Image.new("RGB", (1200, 630), "#ffffff")
     d = ImageDraw.Draw(im)
     f_brand = font(DISPLAY, 40)
-    d.text((80, 70), "karting", font=f_brand, fill="#111111")
-    w = d.textlength("karting", font=f_brand)
+    d.text((80, 70), "kartings", font=f_brand, fill="#111111")
+    w = d.textlength("kartings", font=f_brand)
     d.text((80 + w, 70), ".cat", font=f_brand, fill="#8a8d92")
     f_title = font(DISPLAY, 92)
     t = title

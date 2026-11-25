@@ -15,9 +15,9 @@ from data import KARTINGS, EXCLUDED, LEAGUE, CHECKED, GEO, ZONES, BARCELONA, MAP
 from i18n import UI, LANGS, LOCALE, AREA_TXT  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-# Cambia BASE cuando el dominio propio (p. ej. https://karting.cat/) apunte a GitHub Pages.
+# Cambia BASE a "https://kartings.cat/" cuando el dominio apunte a GitHub Pages (pasos en el README).
 BASE = "https://pablomariaarranzpou.github.io/kartings-catalunya/"
-BRAND = "karting.cat"
+BRAND = "kartings.cat"
 REPO = "https://github.com/pablomariaarranzpou/kartings-catalunya"
 PATHS = {"es": "", "ca": "ca/", "en": "en/"}
 DATE_TXT = {"es": "25 de noviembre de 2026", "ca": "25 de novembre de 2026", "en": "25 November 2026"}
