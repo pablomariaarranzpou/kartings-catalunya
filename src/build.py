@@ -377,6 +377,7 @@ def finder(L, pid):
       <button type="button" class="near" data-near>{e(u["near_me"])}</button>
     </div>
   </form>
+  <h2 class="vh">{e(u["res_title"])}</h2>
   <div class="res-head"><p class="count" aria-live="polite">{e(u["count"].format(n=n_session))}</p><p class="checked">{e(u["checked_note"])}</p></div>
   <p class="geo-msg" hidden></p>
   <ol class="results">{rows}</ol>

@@ -590,3 +590,6 @@ UI["en"]["zone_all"] = "All of Catalonia"
 UI["es"]["area_desc1"] = "El karting {in_} con precios oficiales de 2026: tandas desde {p}{race}. Y los circuitos más cercanos, con €/minuto, nota en Google y distancia."
 UI["ca"]["area_desc1"] = "El kàrting {in_} amb preus oficials de 2026: tandes des de {p}{race}. I els circuits més propers, amb €/minut, nota a Google i distància."
 UI["en"]["area_desc1"] = "The go-kart track {in_} with official 2026 prices: sessions from {p}{race}. Plus the nearest tracks, with €/minute, Google rating and distance."
+
+for _L, _t in {"es": "Resultados", "ca": "Resultats", "en": "Results"}.items():
+    UI[_L]["res_title"] = _t
