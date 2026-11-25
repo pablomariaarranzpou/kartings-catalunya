@@ -393,3 +393,53 @@ UI["en"].update(
     rank_intro2="Official website prices only. Highlighted in yellow: the best in each table.",
     tab_min="€/min per session", tab_deal="Packs and offers", tab_long="Longest sessions",
 )
+
+# ---- Valoraciones de Google Maps, desglose de carreras y filtros de duración ----
+UI["es"].update(
+    stars_label="Nota en Google", stars_any="Cualquiera", stars_opt="{v} ★ o más",
+    dur_label="Duración de la tanda", dur_any="Cualquier duración", dur_opt="{n} min o más",
+    sort_rating="Nota en Google", sort_track="Minutos en pista", sort_eurmin_track="€ por minuto en pista",
+    best_rating="Mejor valorado", best_track="Más tiempo en pista",
+    reviews="{n} reseñas", maps_open="Ver en Google Maps", no_rating="Sin ficha en Google Maps",
+    lbl_rating="Google Maps",
+    ph={"free": "Libres", "warm": "Warm-up", "quali": "Quali", "qualilaps": "Quali", "race": "Carrera", "racelaps": "Carrera",
+        "recon": "Reconocimiento", "total": "Total", "endurh": "Resistencia"},
+    unit_min="{n} min", unit_laps="{n} vueltas", unit_h="{n} h",
+    track_exact="{n} min en pista", track_atleast="{n} min + vueltas", track_laps="Carrera por vueltas: tiempo total no publicado",
+    track_unknown="Tiempo en pista no publicado",
+    eurmin_track="{v} en pista", no_quali_note="sin quali", no_warm="sin libres ni warm-up",
+    rating_method="Las estrellas son la media de Google Maps y el número de reseñas, leídos en la ficha de cada circuito el 25 de noviembre de 2026. Puntúan el sitio entero (atención, instalaciones, karts), no solo la tarifa, y cambian con el tiempo: pulsa la nota para ver la ficha actual.",
+    phases_method="Para cada carrera separamos las fases que publica el circuito (libres o warm-up, quali y carrera) y si van por minutos o por vueltas. Solo sumamos «minutos en pista» cuando todas las fases van por tiempo; si la carrera va por vueltas mostramos los minutos conocidos más «+ vueltas», sin inventar cuánto duran.",
+)
+UI["ca"].update(
+    stars_label="Nota a Google", stars_any="Qualsevol", stars_opt="{v} ★ o més",
+    dur_label="Durada de la tanda", dur_any="Qualsevol durada", dur_opt="{n} min o més",
+    sort_rating="Nota a Google", sort_track="Minuts a pista", sort_eurmin_track="€ per minut a pista",
+    best_rating="Més ben valorat", best_track="Més temps a pista",
+    reviews="{n} ressenyes", maps_open="Veure a Google Maps", no_rating="Sense fitxa a Google Maps",
+    lbl_rating="Google Maps",
+    ph={"free": "Lliures", "warm": "Escalfament", "quali": "Quali", "qualilaps": "Quali", "race": "Cursa", "racelaps": "Cursa",
+        "recon": "Reconeixement", "total": "Total", "endurh": "Resistència"},
+    unit_min="{n} min", unit_laps="{n} voltes", unit_h="{n} h",
+    track_exact="{n} min a pista", track_atleast="{n} min + voltes", track_laps="Cursa per voltes: temps total no publicat",
+    track_unknown="Temps a pista no publicat",
+    eurmin_track="{v} a pista", no_quali_note="sense quali", no_warm="sense lliures ni escalfament",
+    rating_method="Les estrelles són la mitjana de Google Maps i el nombre de ressenyes, llegits a la fitxa de cada circuit el 25 de novembre de 2026. Puntuen el lloc sencer (atenció, instal·lacions, karts), no només la tarifa, i canvien amb el temps: prem la nota per veure la fitxa actual.",
+    phases_method="Per a cada cursa separem les fases que publica el circuit (lliures o escalfament, quali i cursa) i si van per minuts o per voltes. Només sumem «minuts a pista» quan totes les fases van per temps; si la cursa va per voltes mostrem els minuts coneguts més «+ voltes», sense inventar quant duren.",
+)
+UI["en"].update(
+    stars_label="Google rating", stars_any="Any", stars_opt="{v} ★ or more",
+    dur_label="Session length", dur_any="Any length", dur_opt="{n} min or more",
+    sort_rating="Google rating", sort_track="Minutes on track", sort_eurmin_track="Price per minute on track",
+    best_rating="Top rated", best_track="Most time on track",
+    reviews="{n} reviews", maps_open="See on Google Maps", no_rating="Not on Google Maps",
+    lbl_rating="Google Maps",
+    ph={"free": "Practice", "warm": "Warm-up", "quali": "Qualifying", "qualilaps": "Qualifying", "race": "Race", "racelaps": "Race",
+        "recon": "Sighting laps", "total": "Total", "endurh": "Endurance"},
+    unit_min="{n} min", unit_laps="{n} laps", unit_h="{n} h",
+    track_exact="{n} min on track", track_atleast="{n} min + laps", track_laps="Race by laps: total time not published",
+    track_unknown="Time on track not published",
+    eurmin_track="{v} on track", no_quali_note="no qualifying", no_warm="no practice or warm-up",
+    rating_method="Stars are the Google Maps average and review count, read on each track's listing on 25 November 2026. They rate the whole venue (staff, facilities, karts), not just the price, and they change over time: tap the rating to see the current listing.",
+    phases_method="For each race we split out the phases the track publishes (practice or warm-up, qualifying and race) and whether they run on minutes or laps. We only add up “minutes on track” when every phase is timed; if the race runs on laps we show the known minutes plus “+ laps”, without guessing how long they take.",
+)

@@ -717,16 +717,51 @@ LEAGUE = dict(name="SKC Cataluña (Soul Racing Kart)", src="https://soulracingka
 # sirve para calcular distancias en línea recta, no para llegar).
 ZONES = ["bcn", "central", "south", "brava", "lleida"]
 GEO = {
-    "ikb": ("bcn", 41.381, 2.045), "gene": ("bcn", 41.314, 2.014), "minilandia": ("bcn", 41.314, 2.014),
+    "ikb": ("bcn", 41.381, 2.045), "gene": ("bcn", 41.31024, 2.02659), "minilandia": ("bcn", 41.27566, 2.04766),
     "cardedeu": ("bcn", 41.639, 2.358), "nurburgreen": ("bcn", 41.630, 2.296), "kartodrom": ("bcn", 41.590, 2.240),
     "penedes": ("central", 41.346, 1.698), "sallent": ("central", 41.826, 1.895), "osona": ("central", 41.930, 2.255),
     "parcmotor": ("central", 41.598, 1.700),
-    "altafulla": ("south", 41.142, 1.377), "tarraco": ("south", 41.119, 1.245), "salou": ("south", 41.076, 1.140),
-    "electricsalou": ("south", 41.076, 1.140), "vendrell": ("south", 41.219, 1.535), "comarruga": ("south", 41.183, 1.522),
-    "calafat": ("south", 40.930, 0.840),
-    "empuriabrava": ("brava", 42.247, 3.120), "cross": ("brava", 42.250, 3.070), "roses": ("brava", 42.262, 3.176),
-    "lescala": ("brava", 42.125, 3.131), "palamos": ("brava", 41.846, 3.129), "lloret": ("brava", 41.700, 2.845),
-    "blanes": ("brava", 41.674, 2.790), "regencos": ("brava", 41.950, 3.170),
-    "elpla": ("lleida", 42.316, 1.396), "zona": ("lleida", 41.565, 0.830), "c5584": ("lleida", 41.729, 0.744),
+    "altafulla": ("south", 41.14061, 1.38345), "tarraco": ("south", 41.11394, 1.23231), "salou": ("south", 41.09211, 1.12970),
+    "electricsalou": ("south", 41.09335, 1.15133), "vendrell": ("south", 41.19822, 1.52869), "comarruga": ("south", 41.19250, 1.52607),
+    "calafat": ("south", 40.92647, 0.83753),
+    "empuriabrava": ("brava", 42.26012, 3.11207), "cross": ("brava", 42.250, 3.070), "roses": ("brava", 42.27777, 3.15890),
+    "lescala": ("brava", 42.10891, 3.12401), "palamos": ("brava", 41.86956, 3.13614), "lloret": ("brava", 41.71111, 2.83299),
+    "blanes": ("brava", 41.67254, 2.76284), "regencos": ("brava", 41.95766, 3.17709),
+    "elpla": ("lleida", 42.30341, 1.36786), "zona": ("lleida", 41.56358, 0.78755), "c5584": ("lleida", 41.74203, 0.74426),
 }
 BARCELONA = (41.3874, 2.1686)
+
+
+# Valoración media y nº de reseñas en Google Maps, leídas a mano en la ficha del lugar el 25/11/2026.
+# "maps" es el nombre exacto de la ficha; el enlace se genera como búsqueda de ese nombre.
+# Kartodrom no aparece en Google Maps.
+MAPS_CHECKED = "2026-11-25"
+MAPS = {
+    "sallent": (4.4, 1028, "Karting Sallent"),
+    "gene": (4.2, 1297, "Gené Karting"),
+    "penedes": (4.0, 800, "Scratch Indoor Karting Penedès"),
+    "osona": (4.3, 551, "Circuit d'Osona"),
+    "parcmotor": (4.5, 2504, "Karting Parcmotor Castellolí"),
+    "cardedeu": (4.2, 2360, "Karting Cardedeu"),
+    "nurburgreen": (4.7, 1112, "Nürburgreen Indoor - Karting Electric"),
+    "ikb": (4.2, 7292, "Indoor Karting Barcelona"),
+    "minilandia": (4.0, 1992, "Karting Minilandia, Parc Recreatiu."),
+    "altafulla": (4.2, 384, "Karting Altafulla"),
+    "tarraco": (4.5, 1028, "Tarraco Karting"),
+    "salou": (4.5, 3782, "Karting Salou"),
+    "calafat": (4.0, 300, "Karting Calafat"),
+    "vendrell": (4.3, 2894, "Karting Vendrell"),
+    "electricsalou": (4.2, 599, "Karting Electric Salou"),
+    "comarruga": (4.5, 919, "KARTING COMA-RUGA"),
+    "empuriabrava": (4.5, 1020, "Karting Empuriabrava"),
+    "cross": (4.4, 796, "Karting Cross Costa Brava"),
+    "roses": (4.2, 2052, "Karting Roses"),
+    "lescala": (3.9, 812, "Go Karts l'Escala"),
+    "palamos": (4.0, 386, "Karting Palamós S.L."),
+    "lloret": (3.8, 459, "Karting Formula Lloret"),
+    "blanes": (4.1, 900, "Karting Blanes"),
+    "regencos": (4.2, 324, "Karting Regencós"),
+    "elpla": (4.4, 868, "Karting El Pla"),
+    "zona": (4.2, 254, "Circuit de Juneda"),
+    "c5584": (4.5, 434, "Circuit 55-84"),
+}

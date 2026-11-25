@@ -11,7 +11,7 @@ from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from data import KARTINGS, EXCLUDED, LEAGUE, CHECKED, GEO, ZONES, BARCELONA  # noqa: E402
+from data import KARTINGS, EXCLUDED, LEAGUE, CHECKED, GEO, ZONES, BARCELONA, MAPS  # noqa: E402
 from i18n import UI, LANGS, LOCALE  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -61,6 +61,72 @@ def pm_txt(v, L):
 
 def struct_txt(struct, L):
     return " + ".join(tx(v, L) if k == "raw" else UI[L]["struct"][k].format(n=v) for k, v in struct)
+
+
+TIMED = {"free": 1, "warm": 1, "quali": 1, "race": 1, "total": 1, "endurh": 60}
+LAPS = {"qualilaps", "racelaps", "recon"}
+
+
+def track_time(struct):
+    """(minutos conocidos, hay fases por vueltas, hay fases sin cifra). Nunca estima la duración de una vuelta."""
+    mins, laps, unknown = 0, False, False
+    for k, v in struct:
+        if k in TIMED:
+            mins += v * TIMED[k]
+        elif k in LAPS:
+            laps = True
+        else:
+            unknown = True
+    return mins, laps, unknown
+
+
+def track_txt(struct, L):
+    u = UI[L]
+    mins, laps, unknown = track_time(struct)
+    if unknown:
+        return u["track_unknown"]
+    if laps:
+        return u["track_atleast"].format(n=mins) if mins else u["track_laps"]
+    return u["track_exact"].format(n=mins)
+
+
+def phases_html(struct, L):
+    u = UI[L]
+    out = []
+    for k, v in struct:
+        if k == "raw":
+            out.append(f'<li class="ph ph-raw">{e(tx(v, L))}</li>')
+            continue
+        val = (u["unit_laps"] if k in LAPS else u["unit_h"] if k == "endurh" else u["unit_min"]).format(n=v)
+        kind = {"qualilaps": "quali", "racelaps": "race", "warm": "free"}.get(k, k)
+        out.append(f'<li class="ph ph-{kind}"><b>{e(u["ph"][k])}</b> {e(val)}</li>')
+    return f'<ol class="phases">{"".join(out)}</ol>'
+
+
+def ints(n, L):
+    s = f"{n:,}"
+    return s if L == "en" else s.replace(",", ".")
+
+
+def maps_url(k):
+    from urllib.parse import quote
+    name = MAPS[k["id"]][2]
+    town = k["town"].split(" (")[0].split("–")[0]
+    return "https://www.google.com/maps/search/?api=1&query=" + quote(f"{name} {town}")
+
+
+def stars_html(k, L, cls="stars", as_link=True):
+    u = UI[L]
+    if k["id"] not in MAPS:
+        return f'<span class="{cls} none">{e(u["no_rating"])}</span>'
+    st, n, _ = MAPS[k["id"]]
+    low = " low" if st < 4.0 else ""
+    inner = (f'<span aria-hidden="true">★</span> {num(st, L, 1)}'
+             f' <small>({e(u["reviews"].format(n=ints(n, L)))})</small>')
+    if not as_link:
+        return f'<span class="{cls}{low}">{inner}</span>'
+    return (f'<a class="{cls}{low}" href="{e(maps_url(k))}" target="_blank" rel="noopener nofollow" '
+            f'title="{e(u["maps_open"])}">{inner}</a>')
 
 
 def people_txt(r, L):
@@ -139,22 +205,24 @@ def header(L, mode, pid):
 
 
 # ------------------------------------------------------------------ buscador
-def session_row(k, L, pid):
+def session_rows(k, L, pid):
+    """Una fila por tanda publicada; el JS se queda con la mejor de cada circuito según filtros y orden."""
     u = UI[L]
     z, la, lo, dkm = geo(k)
-    s = (ok_sessions(k) or [s for s in k["sessions"] if not set(s["flags"]) & BAD] or [None])[0]
-    if s is None:
-        return ""
-    v = permin(s["price"], s["mins"])
     dv, d = best_deal(k)
-    sub = f'{s["mins"]} min · {pm_txt(v, L)}' if s["mins"] else u["dur_unknown"]
-    pack = ""
-    if dv is not None and (v is None or dv < v):
-        pack = f'<span class="r-pack">{e(u["with_pack"].format(v=pm_txt(dv, L)))}</span>'
-    lab = " · ".join(x for x in [tx(s["label"], L) if s["label"] else "", tx(s["cond"], L) if s["cond"] else ""] if x)
-    return row_html(k, L, pid, "session", dict(price=s["price"], eurmin=v if v is not None else ""),
-                    big=money(s["price"], L), sub=sub, extra=pack, line=lab, flags=[f for f in k["flags"] if f in ("season", "snippet", "unconfirmed")] + list(s["flags"]),
-                    src=s["src"], dkm=dkm, zone=z, la=la, lo=lo)
+    out = []
+    for s in [s for s in k["sessions"] if s["price"] is not None and not set(s["flags"]) & BAD]:
+        v = permin(s["price"], s["mins"])
+        sub = f'{s["mins"]} min · {pm_txt(v, L)}' if s["mins"] else u["dur_unknown"]
+        pack = ""
+        if dv is not None and (v is None or dv < v):
+            pack = f'<span class="r-pack">{e(u["with_pack"].format(v=pm_txt(dv, L)))}</span>'
+        lab = " · ".join(x for x in [tx(s["label"], L) if s["label"] else "", tx(s["cond"], L) if s["cond"] else ""] if x)
+        out.append(row_html(k, L, pid, "session", dict(price=s["price"], eurmin=v if v is not None else "", mins=s["mins"] or ""),
+                            big=money(s["price"], L), sub=sub, extra=pack, line=lab,
+                            flags=[f for f in k["flags"] if f in ("season", "snippet", "unconfirmed")] + list(s["flags"]),
+                            src=s["src"], dkm=dkm, zone=z, la=la, lo=lo, hidden=bool(out)))
+    return "".join(out)
 
 
 def race_rows(k, L, pid):
@@ -167,27 +235,35 @@ def race_rows(k, L, pid):
         minp = r["minp"]
         if isinstance(minp, str):  # p. ej. "2–5": nos quedamos con el mayor por prudencia
             minp = int(minp.split("–")[-1])
-        line = " · ".join(x for x in [tx(r["name"], L), struct_txt(r["struct"], L)] if x)
+        mins, laps, unknown = track_time(r["struct"])
+        exact = mins > 0 and not laps and not unknown
+        em = permin(r["price"], mins) if exact else None
+        summ = track_txt(r["struct"], L) + (" · " + u["eurmin_track"].format(v=pm_txt(em, L)) if em is not None else "")
         cond = " · ".join(x for x in [people_txt(r, L), tx(r["cond"], L) if r["cond"] else "",
                                       tx(r["price_note"], L) if r["price_note"] else ""] if x)
-        out.append(row_html(k, L, pid, "race", dict(price=r["price"], minp=minp or "", maxp=r["maxp"] or ""),
+        out.append(row_html(k, L, pid, "race", dict(price=r["price"], minp=minp or "", maxp=r["maxp"] or "",
+                                                    track=mins if not unknown else "", eurmin=em if em is not None else ""),
                             big=money(r["price"], L), sub={"es": "por persona", "ca": "per persona", "en": "per person"}[L], extra='<span class="r-total"></span>',
-                            line=line, cond=cond, flags=[f for f in k["flags"] if f in ("season", "snippet", "unconfirmed")] + list(r["flags"]), src=r["src"],
+                            line=tx(r["name"], L), phases=phases_html(r["struct"], L),
+                            summary=f'<p class="r-track{" exact" if exact else ""}">{e(summ)}</p>',
+                            cond=cond, flags=[f for f in k["flags"] if f in ("season", "snippet", "unconfirmed")] + list(r["flags"]), src=r["src"],
                             dkm=dkm, zone=z, la=la, lo=lo, hidden=True))
     return "".join(out)
 
 
-def row_html(k, L, pid, mode, data, big, sub, extra, line, flags, src, dkm, zone, la, lo, cond="", hidden=False):
+def row_html(k, L, pid, mode, data, big, sub, extra, line, flags, src, dkm, zone, la, lo, cond="", hidden=False, phases="", summary=""):
     u = UI[L]
+    data = dict(data, stars=MAPS[k["id"]][0] if k["id"] in MAPS else "", reviews=MAPS[k["id"]][1] if k["id"] in MAPS else "")
     attrs = "".join(f' data-{a}="{v}"' for a, v in data.items())
     meta = " · ".join(x for x in [k["town"], u["type_short"][k["type"]] + (f' ({u["electric"]})' if k.get("electric") else ""),
                                    tx(k["kart"], L) if k.get("kart") else ""] if x)
     fl = flag_txt(sorted(set(flags)), L, skip=("noyear",))
     return f'''<li class="res" data-mode="{mode}" data-k="{k["id"]}" data-zone="{zone}" data-lat="{la}" data-lon="{lo}"{attrs}{" hidden" if hidden else ""}>
   <div class="r-main">
-    <h3><a href="#{pid("k-" + k["id"])}">{e(k["name"])}</a></h3>
+    <h3><a href="#{pid("k-" + k["id"])}">{e(k["name"])}</a> {stars_html(k, L)}</h3>
     <p class="r-meta">{e(meta)}</p>
     {f'<p class="r-line">{e(line)}</p>' if line else ""}
+    {phases}{summary}
     {f'<p class="r-cond">{e(cond)}</p>' if cond else ""}
     {f'<p class="r-flags">{fl}</p>' if fl else ""}
   </div>
@@ -198,13 +274,20 @@ def row_html(k, L, pid, mode, data, big, sub, extra, line, flags, src, dkm, zone
 
 def finder(L, pid):
     u = UI[L]
-    rows = "".join(session_row(k, L, pid) for k in OK) + "".join(race_rows(k, L, pid) for k in OK)
+    rows = "".join(session_rows(k, L, pid) for k in OK) + "".join(race_rows(k, L, pid) for k in OK)
     zones = f'<option value="*">{e(u["zone_all"])}</option>' + "".join(
         f'<option value="{z}">{e(u["zones"][z])}</option>' for z in ZONES)
+    stars = f'<option value="0">{e(u["stars_any"])}</option>' + "".join(
+        f'<option value="{v}">{e(u["stars_opt"].format(v=num(v, L, 1)))}</option>' for v in (4.0, 4.3, 4.5))
+    durs = f'<option value="0">{e(u["dur_any"])}</option>' + "".join(
+        f'<option value="{n}">{e(u["dur_opt"].format(n=n))}</option>'
+        for n in sorted({s["mins"] for k in OK for s in k["sessions"] if s["mins"] and s["mins"] > 8 and not set(s["flags"]) & BAD}))
     cfg = dict(lang={"es": "es-ES", "ca": "ca-ES", "en": "en-GB"}[L], count=u["count"], count1=u["count1"],
                total=u["total_for"], from_bcn=u["from_bcn"], from_you=u["from_you"], near_ok=u["near_ok"],
-               near_fail=u["near_fail"], badge={"price": u["best_price"], "eurmin": u["best_eurmin"], "dist": u["best_dist"]})
-    n_session = sum(1 for k in OK if session_row(k, L, pid))
+               near_fail=u["near_fail"], eurmin_session=u["sort_eurmin"], eurmin_race=u["sort_eurmin_track"],
+               badge={"price": u["best_price"], "eurmin": u["best_eurmin"], "dist": u["best_dist"],
+                      "rating": u["best_rating"], "track": u["best_track"]})
+    n_session = sum(1 for k in OK if session_rows(k, L, pid))
     return f'''
 <section class="finder" id="{pid("buscador")}">
   <script type="application/json" class="cfg">{json.dumps(cfg, ensure_ascii=False)}</script>
@@ -218,8 +301,10 @@ def finder(L, pid):
       <label class="ctl"><span>{e(u["zone_label"])}</span><select id="{L}-zone" data-ctl="zone">{zones}</select></label>
       <label class="ctl ppl" hidden><span>{e(u["people_label"])}</span>
         <span class="stepper"><button type="button" data-step="-1" aria-label="−1">−</button><input id="{L}-n" type="number" inputmode="numeric" min="1" max="40" value="6" data-ctl="n"><button type="button" data-step="1" aria-label="+1">+</button></span></label>
+      <label class="ctl dur"><span>{e(u["dur_label"])}</span><select id="{L}-dur" data-ctl="dur">{durs}</select></label>
+      <label class="ctl"><span>{e(u["stars_label"])}</span><select id="{L}-stars" data-ctl="stars">{stars}</select></label>
       <label class="ctl"><span>{e(u["sort_label"])}</span><select id="{L}-sort" data-ctl="sort">
-        <option value="eurmin" selected>{e(u["sort_eurmin"])}</option><option value="price">{e(u["sort_price"])}</option><option value="dist">{e(u["sort_dist"])}</option></select></label>
+        <option value="eurmin" selected>{e(u["sort_eurmin"])}</option><option value="price">{e(u["sort_price"])}</option><option value="track" hidden disabled>{e(u["sort_track"])}</option><option value="rating">{e(u["sort_rating"])}</option><option value="dist">{e(u["sort_dist"])}</option></select></label>
       <button type="button" class="near" data-near>{e(u["near_me"])}</button>
     </div>
   </form>
@@ -261,6 +346,7 @@ def entry(k, L, pid):
         web.append(link(k["pdf"], u["pdf"], "web"))
     if web:
         meta.append((u["official_web"], " · ".join(web)))
+    meta.append((u["lbl_rating"], stars_html(k, L)))
     dl = "".join(f"<div><dt>{e(a)}</dt><dd>{b}</dd></div>" for a, b in meta)
 
     def li(what, small, val, flags, src, offer=False):
@@ -284,7 +370,7 @@ def entry(k, L, pid):
     if k["races"]:
         items = []
         for r in k["races"]:
-            small = " · ".join(x for x in [struct_txt(r["struct"], L), people_txt(r, L) if r["minp"] else "",
+            small = " · ".join(x for x in [struct_txt(r["struct"], L), track_txt(r["struct"], L), people_txt(r, L) if r["minp"] else "",
                                            tx(r["cond"], L) if r["cond"] else "", tx(r["price_note"], L) if r["price_note"] else ""] if x)
             val = money(r["price"], L) + (u["per_person"] if r["price"] is not None else "")
             items.append(li(tx(r["name"], L), small, val, r["flags"], r["src"]))
@@ -294,7 +380,7 @@ def entry(k, L, pid):
     unc = f'<span class="flag">{e(u["uncertain_tag"])}</span>' if k["status"] != "ok" else ""
     return f'''
 <details class="k{" unc" if k["status"] != "ok" else ""}" id="{pid("k-" + k["id"])}">
-  <summary><span class="k-name">{e(k["name"])}</span><span class="k-meta">{e(k["town"])} · {e(typ)} · {e(u["from_bcn"].format(km=dkm))}</span><span class="k-from">{e(frm)}</span></summary>
+  <summary><span class="k-name">{e(k["name"])}</span><span class="k-meta">{e(k["town"])} · {e(typ)} · {e(u["from_bcn"].format(km=dkm))}</span>{stars_html(k, L, "stars k-stars", as_link=False) if k["id"] in MAPS else "<span class=k-stars></span>"}<span class="k-from">{e(frm)}</span></summary>
   <div class="k-body">
     <div class="k-flags">{unc}{flag_txt(k["flags"], L)}</div>
     {f'<dl class="meta">{dl}</dl>' if dl else ""}
@@ -338,8 +424,8 @@ def rankings(L, pid):
         prod = " · ".join(x for x in [tx(s["label"], L) if s["label"] else "", tx(s["cond"], L) if s["cond"] else ""] if x)
         b.append(f'<tr{" class=best" if r == 1 else ""}><td class="n rk">{r}</td><th scope="row"><a href="#{pid("k-" + k["id"])}">{e(k["name"])}</a>'
                  f'{f"<small>{e(prod)}</small>" if prod else ""}</th><td class="n">{money(s["price"], L)}</td><td class="n">{s["mins"]} min</td>'
-                 f'<td class="n hl">{pm_txt(v, L)}</td><td>{flag_txt(s["flags"], L)}{link(s["src"], u["source"])}</td></tr>')
-    tb = table([(u["th_rank"], 1), (u["th_karting"], 0), (u["th_price"], 1), (u["th_minutes"], 1), ("€/min", 1), (u["th_source"], 0)], b)
+                 f'<td class="n hl">{pm_txt(v, L)}</td><td>{stars_html(k, L)}</td><td>{flag_txt(s["flags"], L)}{link(s["src"], u["source"])}</td></tr>')
+    tb = table([(u["th_rank"], 1), (u["th_karting"], 0), (u["th_price"], 1), (u["th_minutes"], 1), ("€/min", 1), ("Google", 0), (u["th_source"], 0)], b)
     drows = sorted([(permin(d["price"], d["mins"]), k, d) for k in OK for d in k["deals"] if not set(d["flags"]) & BAD], key=lambda t: t[0])
     c = []
     for r, (v, k, d) in zip(ranks([t[0] for t in drows]), drows):
@@ -375,7 +461,7 @@ def rankings(L, pid):
 def faq(L, pid):
     u = UI[L]
     items = "".join(f'<details class="qa"><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in u["faq"])
-    ps = "".join(f"<li>{e(p)}</li>" for p in u["method"])
+    ps = "".join(f"<li>{e(p)}</li>" for p in list(u["method"]) + [u["phases_method"], u["rating_method"]])
     fl = "".join(f'<li>{flag_txt([f], L)} {e(u["flag_long"][f])}</li>' for f in u["flag"])
     return f'''
 <section class="sec" id="{pid("faq")}">
