@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://pablomariaarranzpou.github.io/kartings-catalunya/"
 BRAND = "kartings.cat"
 # Google Search Console: pega aquí el valor "content" de la etiqueta HTML de verificación
-GOOGLE_VERIFY = ""
+GOOGLE_VERIFY = "eJjK1eOSUA6XvvRNbV2d2BOVXilws1gfBw6FOxWXxk4"
 REPO = "https://github.com/pablomariaarranzpou/kartings-catalunya"
 PATHS = {"es": "", "ca": "ca/", "en": "en/"}
 DATE_TXT = {"es": "25 de noviembre de 2026", "ca": "25 de novembre de 2026", "en": "25 November 2026"}
