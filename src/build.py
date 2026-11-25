@@ -718,7 +718,9 @@ def head(L):
 <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="{pre}assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
+<link rel="preload" as="style" href="{FONTS}">
+<link rel="stylesheet" href="{FONTS}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="{FONTS}"></noscript>
 <script type="application/ld+json">{jsonld(L)}</script>
 <style>{CSS}</style>
 </head>
