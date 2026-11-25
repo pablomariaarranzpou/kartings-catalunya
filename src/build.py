@@ -12,7 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from data import KARTINGS, EXCLUDED, LEAGUE, CHECKED, GEO, ZONES, BARCELONA, MAPS  # noqa: E402
-from i18n import UI, LANGS, LOCALE  # noqa: E402
+from i18n import UI, LANGS, LOCALE, AREA_TXT  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 # Cambia BASE cuando el dominio propio (p. ej. https://karting.cat/) apunte a GitHub Pages.
@@ -182,24 +182,84 @@ def geo(k):
     return z, la, lo, km_round(km(BARCELONA, (la, lo)))
 
 
+# Zonas de búsqueda: provincias + zonas turísticas o comarcales (un circuito puede estar en varias).
+AREA_DEF = {
+    "barcelona": "B", "girona": "G", "tarragona": "T", "lleida": "L",
+    "costa-brava": ["empuriabrava", "cross", "roses", "palamos", "lescala", "lloret", "blanes", "regencos"],
+    "costa-daurada": ["altafulla", "tarraco", "salou", "electricsalou", "vendrell", "comarruga"],
+    "delta-ebre": ["calafat"],
+    "pirineu": ["elpla"],
+    "penedes": ["penedes", "vendrell", "comarruga"],
+    "valles": ["cardedeu", "nurburgreen", "kartodrom"],
+    "catalunya-central": ["sallent", "osona", "parcmotor"],
+    "baix-llobregat": ["ikb", "gene", "minilandia"],
+}
+PROVS = ["barcelona", "girona", "tarragona", "lleida"]
+PROV_OF = {"B": "barcelona", "G": "girona", "T": "tarragona", "L": "lleida"}
+AREA_IDS = {a: {k["id"] for k in KARTINGS if (k["prov"] == d if isinstance(d, str) else k["id"] in d)}
+            for a, d in AREA_DEF.items()}
+CTX = {"area": None, "home": "", "mode": "site"}  # página que se está generando
+
+
+def areas_of(k):
+    return [a for a in AREA_DEF if k["id"] in AREA_IDS[a]]
+
+
+def page_path(L, area=None):
+    return PATHS[L] + (f"karting-{area}/" if area else "")
+
+
+def rel(L, area=None):
+    return "../" * page_path(L, area).count("/")
+
+
+def href_to(L, area=None):
+    """Enlace relativo desde la página actual a otra página del sitio (absoluto en el artifact)."""
+    if CTX["mode"] == "artifact":
+        return BASE + page_path(L, area)
+    return (CTX["rel"] + page_path(L, area)) or "./"
+
+
+def klink(k, pid):
+    if CTX["area"] and k["id"] not in AREA_IDS[CTX["area"]]:
+        return f'{CTX["home"]}#k-{k["id"]}'
+    return "#" + pid("k-" + k["id"])
+
+
+def area_stats(a):
+    ks = [k for k in OK if k["id"] in AREA_IDS[a]]
+    unc = [k for k in KARTINGS if k["id"] in AREA_IDS[a] and k["status"] != "ok"]
+    sess = [(permin(s["price"], s["mins"]), k, s) for k in ks for s in ok_sessions(k)]
+    best_s = min(sess, key=lambda t: (t[0], t[2]["price"])) if sess else None
+    minp = min((s["price"] for k in ks for s in k["sessions"] if s["price"] is not None and not set(s["flags"]) & BAD), default=None)
+    races = [(r["price"], k, r) for k in ks for r in k["races"]
+             if r["quali"] and r["price"] is not None and not set(r["flags"]) & (BAD | {"junior", "team"})]
+    best_r = min(races, key=lambda t: t[0]) if races else None
+    return ks, unc, best_s, minp, best_r
+
+
+def nearby(a, n=3):
+    pts = [GEO[i][1:] for i in AREA_IDS[a]]
+    c = (sum(p[0] for p in pts) / len(pts), sum(p[1] for p in pts) / len(pts))
+    out = sorted((km(c, GEO[k["id"]][1:]), k) for k in OK if k["id"] not in AREA_IDS[a])
+    return [(km_round(d), k) for d, k in out[:n]]
+
+
 # ------------------------------------------------------------------ cabecera
 def header(L, mode, pid):
     u = UI[L]
     langs = []
     for x in LANGS:
-        if mode == "artifact":
-            href = f"#{x}"
-        else:
-            href = ("../" if L != "es" else "") + PATHS[x] or "./"
-            href = href or "./"
+        href = f"#{x}" if mode == "artifact" else href_to(x, CTX["area"])
         cur = ' aria-current="page"' if x == L else ""
         langs.append(f'<a href="{href}" hreflang="{x}" lang="{x}"{cur}>{x.upper()}</a>')
-    nav = "".join(f'<a href="#{pid(a)}">{e(u[b])}</a>' for a, b in
+    home = "" if not CTX["area"] else CTX["home"]
+    nav = "".join(f'<a href="{home if a in ("rankings", "faq") else ""}#{pid(a)}">{e(u[b])}</a>' for a, b in
                   [("buscador", "nav_finder"), ("circuitos", "nav_dir"), ("rankings", "nav_rank"), ("faq", "nav_faq")])
     name, tld = BRAND.split(".", 1)
     return f'''
 <header class="site-h"><div class="wrap site-h-in">
-  <a class="brand" href="#{pid("top")}">{e(name)}<span>.{e(tld)}</span></a>
+  <a class="brand" href="{CTX["home"] if CTX["area"] else "#" + pid("top")}">{e(name)}<span>.{e(tld)}</span></a>
   <nav class="site-nav" aria-label="{e(u["nav_finder"])}">{nav}</nav>
   <div class="langs">{"".join(langs)}</div>
 </div></header>'''
@@ -259,10 +319,10 @@ def row_html(k, L, pid, mode, data, big, sub, extra, line, flags, src, dkm, zone
     meta = " · ".join(x for x in [k["town"], u["type_short"][k["type"]] + (f' ({u["electric"]})' if k.get("electric") else ""),
                                    tx(k["kart"], L) if k.get("kart") else ""] if x)
     fl = flag_txt(sorted(set(flags)), L, skip=("noyear",))
-    return f'''<li class="res" data-mode="{mode}" data-k="{k["id"]}" data-zone="{zone}" data-lat="{la}" data-lon="{lo}"{attrs}{" hidden" if hidden else ""}>
+    return f'''<li class="res" data-mode="{mode}" data-k="{k["id"]}" data-areas="{" ".join(areas_of(k))}" data-lat="{la}" data-lon="{lo}"{attrs}{" hidden" if hidden else ""}>
   <div class="r-main">
     <span class="badge" hidden></span>
-    <h3><a href="#{pid("k-" + k["id"])}">{e(k["name"])}</a> {stars_html(k, L)}</h3>
+    <h3><a href="{klink(k, pid)}">{e(k["name"])}</a> {stars_html(k, L)}</h3>
     <p class="r-meta">{e(meta)}</p>
     {f'<p class="r-line">{e(line)}</p>' if line else ""}
     {phases}{summary}
@@ -277,8 +337,13 @@ def row_html(k, L, pid, mode, data, big, sub, extra, line, flags, src, dkm, zone
 def finder(L, pid):
     u = UI[L]
     rows = "".join(session_rows(k, L, pid) for k in OK) + "".join(race_rows(k, L, pid) for k in OK)
-    zones = f'<option value="*">{e(u["zone_all"])}</option>' + "".join(
-        f'<option value="{z}">{e(u["zones"][z])}</option>' for z in ZONES)
+    pre = CTX["area"]
+
+    def opt(a):
+        return f'<option value="{a}"{" selected" if a == pre else ""}>{e(AREA_TXT[a][L][0])}</option>'
+    zones = (f'<option value="*"{"" if pre else " selected"}>{e(u["zone_all"])}</option>'
+             f'<optgroup label="{e(u["grp_prov"])}">{"".join(opt(a) for a in PROVS)}</optgroup>'
+             f'<optgroup label="{e(u["grp_area"])}">{"".join(opt(a) for a in AREA_DEF if a not in PROVS)}</optgroup>')
     stars = f'<option value="0">{e(u["stars_any"])}</option>' + "".join(
         f'<option value="{v}">{e(u["stars_opt"].format(v=num(v, L, 1)))}</option>' for v in (4.0, 4.3, 4.5))
     durs = f'<option value="0">{e(u["dur_any"])}</option>' + "".join(
@@ -289,7 +354,7 @@ def finder(L, pid):
                near_fail=u["near_fail"], eurmin_session=u["sort_eurmin"], eurmin_race=u["sort_eurmin_track"],
                badge={"price": u["best_price"], "eurmin": u["best_eurmin"], "dist": u["best_dist"],
                       "rating": u["best_rating"], "track": u["best_track"]})
-    n_session = sum(1 for k in OK if session_rows(k, L, pid))
+    n_session = sum(1 for k in OK if session_rows(k, L, pid) and (not pre or k["id"] in AREA_IDS[pre]))
     return f'''
 <section class="finder" id="{pid("buscador")}">
   <script type="application/json" class="cfg">{json.dumps(cfg, ensure_ascii=False)}</script>
@@ -314,11 +379,41 @@ def finder(L, pid):
   <p class="geo-msg" hidden></p>
   <ol class="results">{rows}</ol>
   <p class="empty" hidden>{e(u["none"])}</p>
+  {areas_nav(L)}
 </section>'''
+
+
+def areas_nav(L):
+    u = UI[L]
+    cur = CTX["area"]
+    links = "".join(f'<a href="{href_to(L, a)}"{" aria-current=page" if a == cur else ""}>{e(AREA_TXT[a][L][0])}</a>'
+                    for a in AREA_DEF)
+    return f'<nav class="areas" aria-label="{e(u["areas_title"])}"><h2>{e(u["other_areas"] if cur else u["areas_title"])}</h2><p>{links}</p></nav>'
 
 
 def intro(L, pid):
     u = UI[L]
+    a = CTX["area"]
+    if a:
+        name, h1in, in_ = AREA_TXT[a][L]
+        ks, unc, best_s, minp, best_r = area_stats(a)
+        sub = (u["area_sub1"] if len(ks) == 1 else u["area_sub"]).format(n=len(ks), in_=in_)
+        if unc:
+            sub += u["area_unc"].format(n=len(unc))
+        near = ""
+        if len(ks) <= 2:
+            lst = ", ".join(f'<a href="{CTX["home"]}#k-{k["id"]}">{e(k["name"])}</a> (≈ {d} km)' for d, k in nearby(a))
+            near = f'<p class="near-areas">{u["nearby"].format(list=lst)}</p>'
+        return f'''
+<div class="intro-block" id="{pid("top")}">
+  <div class="wrap">
+    <p class="crumbs"><a href="{CTX["home"]}">{e(u["crumb_home"])}</a> <span aria-hidden="true">›</span> {e(name)}</p>
+    <h1>{e(u["area_h1"].format(h1in=h1in))}</h1>
+    <p class="sub">{e(sub)}</p>
+    {near}
+    {finder(L, pid)}
+  </div>
+</div>'''
     return f'''
 <div class="intro-block" id="{pid("top")}">
   <div class="wrap">
@@ -394,9 +489,23 @@ def entry(k, L, pid):
 def directory(L, pid):
     u = UI[L]
     groups = []
-    for z in ZONES:
-        ks = sorted([k for k in KARTINGS if GEO[k["id"]][0] == z], key=lambda k: (k["status"] != "ok", k["name"]))
-        groups.append(f'<div class="zone"><h3>{e(u["zones"][z])}</h3>{"".join(entry(k, L, pid) for k in ks)}</div>')
+    a = CTX["area"]
+    for pv in PROVS:
+        ks = sorted([k for k in KARTINGS if PROV_OF[k["prov"]] == pv and (not a or k["id"] in AREA_IDS[a])],
+                    key=lambda k: (k["status"] != "ok", k["name"]))
+        if not ks:
+            continue
+        head = e(AREA_TXT[pv][L][0]) if a == pv else f'<a href="{href_to(L, pv)}">{e(AREA_TXT[pv][L][0])}</a>'
+        groups.append(f'<div class="zone"><h3>{head}</h3>{"".join(entry(k, L, pid) for k in ks)}</div>')
+    if a:
+        return f'''
+<section class="sec" id="{pid("circuitos")}">
+  <div class="wrap">
+    <h2>{e(u["dir_title_area"].format(in_=AREA_TXT[a][L][2]))}</h2>
+    <p class="lead">{e(u["dir_intro"])}</p>
+    {"".join(groups)}
+  </div>
+</section>'''
     exc = "".join(f'<li><b>{e(x["name"])}</b> · {e(x["town"])}. {e(tx(x["why"], L))} {link(x["src"], u["source"])}</li>' for x in EXCLUDED)
     return f'''
 <section class="sec" id="{pid("circuitos")}">
@@ -475,6 +584,32 @@ def faq(L, pid):
 </section>'''
 
 
+def area_qa(L, a):
+    u = UI[L]
+    name, h1in, in_ = AREA_TXT[a][L]
+    ks, unc, best_s, minp, best_r = area_stats(a)
+    qa = [(u["q_count"].format(in_=in_), u["a_count"].format(n=len(ks), names=", ".join(f'{k["name"]} ({k["town"]})' for k in ks)))]
+    if best_s:
+        v, k, s = best_s
+        qa.append((u["q_cheap"].format(in_=in_), u["a_cheap"].format(k=k["name"], town=k["town"], price=money(s["price"], L),
+                                                                     mins=s["mins"], pm=pm_txt(v, L))))
+    if best_r:
+        price, k, r = best_r
+        ppl = u["a_race_people"].format(n=r["minp"]) if r["minp"] else ""
+        qa.append((u["q_race"].format(in_=in_), u["a_race"].format(race=tx(r["name"], L), k=k["name"], price=money(price, L),
+                                                                   struct=struct_txt(r["struct"], L), people=ppl)))
+    return qa
+
+
+def area_faq(L, pid, a):
+    u = UI[L]
+    items = "".join(f'<details class="qa" open><summary>{e(q)}</summary><p>{e(x)}</p></details>' for q, x in area_qa(L, a))
+    return f'''
+<section class="sec alt" id="{pid("faq")}">
+  <div class="wrap"><h2>{e(u["faq_title"])}</h2>{items}</div>
+</section>'''
+
+
 def footer(L):
     u = UI[L]
     return f'''
@@ -487,56 +622,85 @@ def footer(L):
 
 def page_body(L, mode):
     pid = (lambda x: x) if mode == "site" else (lambda x: f"{L}-{x}")
+    if CTX["area"]:
+        return (header(L, mode, pid) + "<main>" + intro(L, pid) + directory(L, pid) + area_faq(L, pid, CTX["area"])
+                + "</main>" + footer(L))
     return (header(L, mode, pid) + "<main>" + intro(L, pid) + directory(L, pid) + rankings(L, pid) + faq(L, pid)
             + "</main>" + footer(L))
+
+
+def set_ctx(L, area=None, mode="site"):
+    CTX.update(area=area, mode=mode, rel=rel(L, area) if mode == "site" else "")
+    CTX["home"] = (BASE + PATHS[L]) if mode == "artifact" else ((CTX["rel"] + PATHS[L]) or "./")
+
+
+def seo_txt(L):
+    """(url, título, descripción) de la página actual."""
+    u = UI[L]
+    a = CTX["area"]
+    if not a:
+        return BASE + PATHS[L], u["seo_title"], u["seo_desc"]
+    name, h1in, in_ = AREA_TXT[a][L]
+    ks, unc, best_s, minp, best_r = area_stats(a)
+    race = u["area_desc_race"].format(r=money(best_r[0], L)) if best_r else ""
+    desc = u["area_desc1" if len(ks) == 1 else "area_desc"].format(n=len(ks), in_=in_, p=money(minp, L), race=race)
+    return BASE + page_path(L, a), u["area_title"].format(h1in=h1in), desc
 
 
 # ------------------------------------------------------------------ SEO
 def jsonld(L):
     u = UI[L]
-    url = BASE + PATHS[L]
+    url, title, desc = seo_txt(L)
+    a = CTX["area"]
     items = []
-    for i, k in enumerate(OK, 1):
+    for i, k in enumerate([k for k in OK if not a or k["id"] in AREA_IDS[a]], 1):
         _, la, lo, _ = geo(k)
         item = {"@type": "SportsActivityLocation", "name": k["name"],
+                "geo": {"@type": "GeoCoordinates", "latitude": la, "longitude": lo},
                 "address": {"@type": "PostalAddress", "addressLocality": k["town"],
                             "addressRegion": u["prov"][k["prov"]], "addressCountry": "ES"}}
         if k.get("web"):
             item["url"] = k["web"]
         items.append({"@type": "ListItem", "position": i, "item": item})
-    graph = [
-        {"@type": "WebPage", "@id": url, "url": url, "name": u["seo_title"], "description": u["seo_desc"],
-         "inLanguage": L, "datePublished": CHECKED, "dateModified": CHECKED,
-         "isPartOf": {"@type": "WebSite", "name": BRAND, "url": BASE}},
-        {"@type": "ItemList", "name": u["h1"], "numberOfItems": len(items), "itemListElement": items},
-        {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}}
-                                            for q, a in u["faq"]]},
-    ]
+    qa = area_qa(L, a) if a else u["faq"]
+    page = {"@type": "WebPage", "@id": url, "url": url, "name": title, "description": desc,
+            "inLanguage": L, "datePublished": CHECKED, "dateModified": CHECKED,
+            "isPartOf": {"@type": "WebSite", "name": BRAND, "url": BASE}}
+    graph = [page,
+             {"@type": "ItemList", "name": u["area_h1"].format(h1in=AREA_TXT[a][L][1]) if a else u["h1"],
+              "numberOfItems": len(items), "itemListElement": items},
+             {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": x}}
+                                                 for q, x in qa]}]
+    if a:
+        page["breadcrumb"] = {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": u["crumb_home"], "item": BASE + PATHS[L]},
+            {"@type": "ListItem", "position": 2, "name": AREA_TXT[a][L][0], "item": url}]}
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)
 
 
 def head(L):
     u = UI[L]
-    url = BASE + PATHS[L]
-    alts = "".join(f'<link rel="alternate" hreflang="{x}" href="{BASE + PATHS[x]}">' for x in LANGS)
-    alts += f'<link rel="alternate" hreflang="x-default" href="{BASE}">'
+    url, title, desc = seo_txt(L)
+    a = CTX["area"]
+    alts = "".join(f'<link rel="alternate" hreflang="{x}" href="{BASE + page_path(x, a)}">' for x in LANGS)
+    alts += f'<link rel="alternate" hreflang="x-default" href="{BASE + page_path("es", a)}">'
     og_alt = "".join(f'<meta property="og:locale:alternate" content="{LOCALE[x]}">' for x in LANGS if x != L)
     img = f"{BASE}assets/og-{L}.png"
-    pre = "../" if L != "es" else ""
+    pre = CTX["rel"]
     return f'''<!doctype html>
 <html lang="{L}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{e(u["seo_title"])}</title>
-<meta name="description" content="{e(u["seo_desc"])}">
+<title>{e(title)}</title>
+<meta name="description" content="{e(desc)}">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="{url}">
 {alts}
 <meta property="og:type" content="website">
 <meta property="og:url" content="{url}">
-<meta property="og:title" content="{e(u["og_title"])}">
-<meta property="og:description" content="{e(u["seo_desc"])}">
+<meta property="og:title" content="{e(title if a else u["og_title"])}">
+<meta property="og:description" content="{e(desc)}">
 <meta property="og:image" content="{img}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -544,8 +708,8 @@ def head(L):
 {og_alt}
 <meta property="og:site_name" content="{BRAND}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{e(u["og_title"])}">
-<meta name="twitter:description" content="{e(u["seo_desc"])}">
+<meta name="twitter:title" content="{e(title if a else u["og_title"])}">
+<meta name="twitter:description" content="{e(desc)}">
 <meta name="twitter:image" content="{img}">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
@@ -564,12 +728,17 @@ JS = (Path(__file__).parent / "app.js").read_text(encoding="utf-8")
 
 
 def build_site():
-    for L in LANGS:
-        out = ROOT / PATHS[L] / "index.html"
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(head(L) + page_body(L, "site") + f"<script>{JS}</script>\n</body>\n</html>\n", encoding="utf-8")
-    alt = "".join(f'<xhtml:link rel="alternate" hreflang="{x}" href="{BASE + PATHS[x]}"/>' for x in LANGS)
-    urls = "".join(f"<url><loc>{BASE + PATHS[L]}</loc><lastmod>{CHECKED}</lastmod>{alt}</url>" for L in LANGS)
+    pages = [None] + list(AREA_DEF)
+    for a in pages:
+        for L in LANGS:
+            set_ctx(L, a)
+            out = ROOT / page_path(L, a) / "index.html"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(head(L) + page_body(L, "site") + f"<script>{JS}</script>\n</body>\n</html>\n", encoding="utf-8")
+    urls = ""
+    for a in pages:
+        alt = "".join(f'<xhtml:link rel="alternate" hreflang="{x}" href="{BASE + page_path(x, a)}"/>' for x in LANGS)
+        urls += "".join(f"<url><loc>{BASE + page_path(L, a)}</loc><lastmod>{CHECKED}</lastmod>{alt}</url>" for L in LANGS)
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
         f'xmlns:xhtml="http://www.w3.org/1999/xhtml">{urls}</urlset>\n', encoding="utf-8")
@@ -577,7 +746,7 @@ def build_site():
 
 
 def build_artifact(path):
-    body = "".join(f'<div class="lang-view" data-lang="{L}" lang="{L}"{"" if L == "es" else " hidden"}>{page_body(L, "artifact")}</div>'
+    body = "".join(set_ctx(L, None, "artifact") or f'<div class="lang-view" data-lang="{L}" lang="{L}"{"" if L == "es" else " hidden"}>{page_body(L, "artifact")}</div>'
                    for L in LANGS)
     doc = (f'<title>Kartings de Cataluña</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n'
            f'<link rel="stylesheet" href="{FONTS}">\n<style>{CSS}</style>\n{body}\n<script>{JS}</script>\n')

@@ -480,3 +480,113 @@ for _L, _fl, _fll, _q, _a in [
     UI[_L]["flag_long"]["team"] = _fll
     UI[_L]["faq"] = list(UI[_L]["faq"])
     UI[_L]["faq"].insert(1, (_q, _a))
+
+# ---- Páginas por zona (SEO local) ----
+# slug: {idioma: (nombre corto, «en X» para el H1, «en X» para frases)}
+AREA_TXT = {
+    "barcelona": {"es": ("Barcelona", "en Barcelona", "en la provincia de Barcelona"),
+                  "ca": ("Barcelona", "a Barcelona", "a la província de Barcelona"),
+                  "en": ("Barcelona", "in Barcelona", "in the province of Barcelona")},
+    "girona": {"es": ("Girona", "en Girona", "en la provincia de Girona"),
+               "ca": ("Girona", "a Girona", "a la província de Girona"),
+               "en": ("Girona", "in Girona", "in the province of Girona")},
+    "tarragona": {"es": ("Tarragona", "en Tarragona", "en la provincia de Tarragona"),
+                  "ca": ("Tarragona", "a Tarragona", "a la província de Tarragona"),
+                  "en": ("Tarragona", "in Tarragona", "in the province of Tarragona")},
+    "lleida": {"es": ("Lleida", "en Lleida", "en la provincia de Lleida"),
+               "ca": ("Lleida", "a Lleida", "a la província de Lleida"),
+               "en": ("Lleida", "in Lleida", "in the province of Lleida")},
+    "costa-brava": {"es": ("Costa Brava", "en la Costa Brava", "en la Costa Brava"),
+                    "ca": ("Costa Brava", "a la Costa Brava", "a la Costa Brava"),
+                    "en": ("Costa Brava", "on the Costa Brava", "on the Costa Brava")},
+    "costa-daurada": {"es": ("Costa Dorada", "en la Costa Dorada", "en la Costa Dorada (Salou, Tarragona, El Vendrell)"),
+                      "ca": ("Costa Daurada", "a la Costa Daurada", "a la Costa Daurada (Salou, Tarragona, el Vendrell)"),
+                      "en": ("Costa Daurada", "on the Costa Daurada", "on the Costa Daurada (Salou, Tarragona, El Vendrell)")},
+    "delta-ebre": {"es": ("Delta del Ebro", "en el Delta del Ebro", "en las Terres de l'Ebre y el Delta del Ebro"),
+                   "ca": ("Delta de l'Ebre", "al Delta de l'Ebre", "a les Terres de l'Ebre i el Delta de l'Ebre"),
+                   "en": ("Ebro Delta", "in the Ebro Delta", "in the Terres de l'Ebre and the Ebro Delta")},
+    "pirineu": {"es": ("Pirineo", "en el Pirineo", "en el Pirineo catalán"),
+                "ca": ("Pirineu", "al Pirineu", "al Pirineu català"),
+                "en": ("Pyrenees", "in the Pyrenees", "in the Catalan Pyrenees")},
+    "penedes": {"es": ("Penedès", "en el Penedès", "en el Penedès"),
+                "ca": ("Penedès", "al Penedès", "al Penedès"),
+                "en": ("Penedès", "in the Penedès", "in the Penedès")},
+    "valles": {"es": ("Vallès", "en el Vallès", "en el Vallès"),
+               "ca": ("Vallès", "al Vallès", "al Vallès"),
+               "en": ("Vallès", "in the Vallès", "in the Vallès")},
+    "catalunya-central": {"es": ("Cataluña central", "en la Cataluña central", "en la Cataluña central (Bages, Osona, Anoia)"),
+                          "ca": ("Catalunya central", "a la Catalunya central", "a la Catalunya central (Bages, Osona, Anoia)"),
+                          "en": ("Central Catalonia", "in Central Catalonia", "in Central Catalonia (Bages, Osona, Anoia)")},
+    "baix-llobregat": {"es": ("Baix Llobregat", "en el Baix Llobregat", "en el Baix Llobregat, al lado de Barcelona"),
+                       "ca": ("Baix Llobregat", "al Baix Llobregat", "al Baix Llobregat, al costat de Barcelona"),
+                       "en": ("Baix Llobregat", "in the Baix Llobregat", "in the Baix Llobregat, next to Barcelona")},
+}
+
+UI["es"].update(
+    grp_prov="Provincias", grp_area="Zonas", areas_title="Busca por zona", other_areas="Otras zonas",
+    crumb_home="Kartings en Cataluña",
+    area_title="Karting {h1in}: precios 2026, tandas y carreras | karting.cat",
+    area_h1="Karting {h1in}",
+    area_desc="{n} kartings {in_} con precios oficiales de 2026: tandas desde {p}{race}. Compara €/minuto, nota en Google y distancia.",
+    area_desc_race=", carreras con quali desde {r} por persona",
+    area_sub="{n} circuitos {in_} con precio publicado en su web. Cada precio enlaza a su fuente.",
+    area_sub1="1 circuito {in_} con precio publicado en su web. Cada precio enlaza a su fuente.",
+    area_unc=" Además, {n} sin precios confirmados.",
+    nearby="¿Te queda lejos? Los más cercanos fuera de la zona: {list}.",
+    dir_title_area="Circuitos {in_}",
+    q_count="¿Cuántos kartings hay {in_}?",
+    a_count="Hay {n} con precios publicados: {names}.",
+    q_cheap="¿Cuál es el karting más barato {in_}?",
+    a_cheap="Por minuto en tanda suelta, {k} ({town}): {price} por {mins} min, {pm}.",
+    q_race="¿Dónde hacer una carrera con amigos {in_}?",
+    a_race="La carrera con quali más barata es {race} de {k}: {price} por persona ({struct}){people}.",
+    a_race_people=", mínimo {n} personas",
+)
+UI["ca"].update(
+    grp_prov="Províncies", grp_area="Zones", areas_title="Cerca per zona", other_areas="Altres zones",
+    crumb_home="Kàrtings a Catalunya",
+    area_title="Kàrting {h1in}: preus 2026, tandes i curses | karting.cat",
+    area_h1="Kàrting {h1in}",
+    area_desc="{n} kàrtings {in_} amb preus oficials de 2026: tandes des de {p}{race}. Compara €/minut, nota a Google i distància.",
+    area_desc_race=", curses amb quali des de {r} per persona",
+    area_sub="{n} circuits {in_} amb preu publicat a la seva web. Cada preu enllaça a la seva font.",
+    area_sub1="1 circuit {in_} amb preu publicat a la seva web. Cada preu enllaça a la seva font.",
+    area_unc=" A més, {n} sense preus confirmats.",
+    nearby="Et queda lluny? Els més propers fora de la zona: {list}.",
+    dir_title_area="Circuits {in_}",
+    q_count="Quants kàrtings hi ha {in_}?",
+    a_count="N'hi ha {n} amb preus publicats: {names}.",
+    q_cheap="Quin és el kàrting més barat {in_}?",
+    a_cheap="Per minut en tanda solta, {k} ({town}): {price} per {mins} min, {pm}.",
+    q_race="On fer una cursa amb amics {in_}?",
+    a_race="La cursa amb quali més barata és {race} de {k}: {price} per persona ({struct}){people}.",
+    a_race_people=", mínim {n} persones",
+)
+UI["en"].update(
+    grp_prov="Provinces", grp_area="Areas", areas_title="Browse by area", other_areas="Other areas",
+    crumb_home="Go-karting in Catalonia",
+    area_title="Go-karting {h1in}: 2026 prices, sessions and races | karting.cat",
+    area_h1="Go-karting {h1in}",
+    area_desc="{n} go-kart tracks {in_} with official 2026 prices: sessions from {p}{race}. Compare €/minute, Google rating and distance.",
+    area_desc_race=", races with qualifying from {r} per person",
+    area_sub="{n} tracks {in_} with prices published on their website. Every price links to its source.",
+    area_sub1="1 track {in_} with prices published on its website. Every price links to its source.",
+    area_unc=" Plus {n} without confirmed prices.",
+    nearby="Too far? The closest tracks outside this area: {list}.",
+    dir_title_area="Tracks {in_}",
+    q_count="How many go-kart tracks are there {in_}?",
+    a_count="There are {n} with published prices: {names}.",
+    q_cheap="What is the cheapest go-karting {in_}?",
+    a_cheap="Per minute on a single session, {k} ({town}): {price} for {mins} min, {pm}.",
+    q_race="Where can I race with friends {in_}?",
+    a_race="The cheapest race with qualifying is {race} at {k}: {price} per person ({struct}){people}.",
+    a_race_people=", minimum {n} people",
+)
+# «Barcelona i rodalia» se confundía con Rodalies: nombres de zona claros
+UI["es"]["zone_all"] = "Toda Cataluña"
+UI["ca"]["zone_all"] = "Tot Catalunya"
+UI["en"]["zone_all"] = "All of Catalonia"
+
+UI["es"]["area_desc1"] = "El karting {in_} con precios oficiales de 2026: tandas desde {p}{race}. Y los circuitos más cercanos, con €/minuto, nota en Google y distancia."
+UI["ca"]["area_desc1"] = "El kàrting {in_} amb preus oficials de 2026: tandes des de {p}{race}. I els circuits més propers, amb €/minut, nota a Google i distància."
+UI["en"]["area_desc1"] = "The go-kart track {in_} with official 2026 prices: sessions from {p}{race}. Plus the nearest tracks, with €/minute, Google rating and distance."

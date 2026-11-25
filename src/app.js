@@ -88,7 +88,7 @@
 
       var cand = rows.filter(function (r) {
         if (r.dataset.mode !== m) return false;
-        if (z !== '*' && r.dataset.zone !== z) return false;
+        if (z !== '*' && (' ' + r.dataset.areas + ' ').indexOf(' ' + z + ' ') < 0) return false;
         if (minStars && !(num(r, 'stars') >= minStars)) return false;
         if (m === 'session' && minDur && !(num(r, 'mins') >= minDur)) return false;
         if (m === 'race') {
