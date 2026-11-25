@@ -63,8 +63,8 @@ def struct_txt(struct, L):
     return " + ".join(tx(v, L) if k == "raw" else UI[L]["struct"][k].format(n=v) for k, v in struct)
 
 
-TIMED = {"free": 1, "warm": 1, "quali": 1, "race": 1, "total": 1, "endurh": 60}
-LAPS = {"qualilaps", "racelaps", "recon"}
+TIMED = {"free": 1, "warm": 1, "quali": 1, "race": 1, "prefinal": 1, "final": 1, "total": 1, "endurh": 60}
+LAPS = {"qualilaps", "racelaps", "recon", "freelaps", "prefinallaps", "finallaps"}
 
 
 def track_time(struct):
@@ -98,7 +98,8 @@ def phases_html(struct, L):
             out.append(f'<li class="ph ph-raw">{e(tx(v, L))}</li>')
             continue
         val = (u["unit_laps"] if k in LAPS else u["unit_h"] if k == "endurh" else u["unit_min"]).format(n=v)
-        kind = {"qualilaps": "quali", "racelaps": "race", "warm": "free"}.get(k, k)
+        kind = {"qualilaps": "quali", "racelaps": "race", "warm": "free", "freelaps": "free", "prefinal": "race", "prefinallaps": "race",
+                "final": "race", "finallaps": "race"}.get(k, k)
         out.append(f'<li class="ph ph-{kind}"><b>{e(u["ph"][k])}</b> {e(val)}</li>')
     return f'<ol class="phases">{"".join(out)}</ol>'
 
@@ -230,7 +231,7 @@ def race_rows(k, L, pid):
     z, la, lo, dkm = geo(k)
     out = []
     for r in k["races"]:
-        if not r["quali"] or r["price"] is None or set(r["flags"]) & BAD:
+        if not r["quali"] or r["price"] is None or set(r["flags"]) & (BAD | {"junior", "team"}):
             continue
         minp = r["minp"]
         if isinstance(minp, str):  # p. ej. "2–5": nos quedamos con el mayor por prudencia
@@ -372,7 +373,7 @@ def entry(k, L, pid):
         for r in k["races"]:
             small = " · ".join(x for x in [struct_txt(r["struct"], L), track_txt(r["struct"], L), people_txt(r, L) if r["minp"] else "",
                                            tx(r["cond"], L) if r["cond"] else "", tx(r["price_note"], L) if r["price_note"] else ""] if x)
-            val = money(r["price"], L) + (u["per_person"] if r["price"] is not None else "")
+            val = money(r["price"], L) + (u["per_person"] if r["price"] is not None and "team" not in r["flags"] else "")
             items.append(li(tx(r["name"], L), small, val, r["flags"], r["src"]))
         parts.append(f'<h4>{e(u["lbl_races"])}</h4><ul class="lines">{"".join(items)}</ul>')
     notes = "".join(f"<li>{e(n)}</li>" for n in tx(k["notes"], L))

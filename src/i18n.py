@@ -95,7 +95,7 @@ UI = {
         ],
         faq=[
             ("¿Cuál es el karting más barato de Cataluña?",
-             "Depende de cómo midas. Por minuto en tanda suelta, Scratch Indoor Karting Penedès (Vilafranca) cobra 19 € por 10 min, 1,90 €/min. Con pack, Karting El Pla (Alt Urgell) baja a 1,20 €/min con 6 tandas por 72 €. En euros, la tanda más barata con duración publicada es la de Karting Minilandia (Viladecans): 16,90 € por 7 min."),
+             "Depende de cómo midas. En tanda suelta de 10 min, Scratch Indoor Karting Penedès (Vilafranca) cobra 19 €, 1,90 €/min. Si reservas más tiempo, Zona Karting (Juneda) cobra 45 € por 30 min, 1,50 €/min (no dice si son minutos seguidos). Con pack, Karting El Pla (Alt Urgell) baja a 1,20 €/min con 6 tandas por 72 €. En euros, la tanda más barata con duración publicada es la de Karting Minilandia (Viladecans): 16,90 € por 7 min."),
             ("¿Dónde hay karting indoor cerca de Barcelona?",
              "Indoor Karting Barcelona (Sant Feliu de Llobregat, 21 € por 8 min), Gené Karting (Viladecans, desde 18 € por 8 min), Nürburgreen Indoor, eléctrico (Les Franqueses del Vallès, 22 € por 8 min) y Scratch Indoor Karting Penedès (Vilafranca, 19 € por 10 min)."),
             ("¿Cuánto cuesta una carrera de karts con clasificación?",
@@ -196,7 +196,7 @@ UI = {
         ],
         faq=[
             ("Quin és el kàrting més barat de Catalunya?",
-             "Depèn de com ho mesuris. Per minut en tanda solta, l'Scratch Indoor Karting Penedès (Vilafranca) cobra 19 € per 10 min, 1,90 €/min. Amb pack, el Karting El Pla (Alt Urgell) baixa a 1,20 €/min amb 6 tandes per 72 €. En euros, la tanda més barata amb durada publicada és la del Karting Minilandia (Viladecans): 16,90 € per 7 min."),
+             "Depèn de com ho mesuris. En tanda solta de 10 min, l'Scratch Indoor Karting Penedès (Vilafranca) cobra 19 €, 1,90 €/min. Si reserves més temps, Zona Karting (Juneda) cobra 45 € per 30 min, 1,50 €/min (no diu si són minuts seguits). Amb pack, el Karting El Pla (Alt Urgell) baixa a 1,20 €/min amb 6 tandes per 72 €. En euros, la tanda més barata amb durada publicada és la del Karting Minilandia (Viladecans): 16,90 € per 7 min."),
             ("On hi ha kàrting indoor a prop de Barcelona?",
              "Indoor Karting Barcelona (Sant Feliu de Llobregat, 21 € per 8 min), Gené Karting (Viladecans, des de 18 € per 8 min), Nürburgreen Indoor, elèctric (les Franqueses del Vallès, 22 € per 8 min) i Scratch Indoor Karting Penedès (Vilafranca, 19 € per 10 min)."),
             ("Quant costa una cursa de karts amb classificació?",
@@ -297,7 +297,7 @@ UI = {
         ],
         faq=[
             ("What is the cheapest go-kart track in Catalonia?",
-             "It depends how you measure it. Per minute on a single session, Scratch Indoor Karting Penedès (Vilafranca) charges €19 for 10 min, €1.90/min. With a pack, Karting El Pla (Alt Urgell) goes down to €1.20/min with 6 sessions for €72. In euros, the cheapest session with a published length is at Karting Minilandia (Viladecans): €16.90 for 7 min."),
+             "It depends how you measure it. For a single 10-minute session, Scratch Indoor Karting Penedès (Vilafranca) charges €19, €1.90/min. If you book more time, Zona Karting (Juneda) charges €45 for 30 min, €1.50/min (it does not say whether the minutes are consecutive). With a pack, Karting El Pla (Alt Urgell) goes down to €1.20/min with 6 sessions for €72. In euros, the cheapest session with a published length is at Karting Minilandia (Viladecans): €16.90 for 7 min."),
             ("Where is there indoor karting near Barcelona?",
              "Indoor Karting Barcelona (Sant Feliu de Llobregat, €21 for 8 min), Gené Karting (Viladecans, from €18 for 8 min), Nürburgreen Indoor, electric (Les Franqueses del Vallès, €22 for 8 min) and Scratch Indoor Karting Penedès (Vilafranca, €19 for 10 min)."),
             ("How much is a go-kart race with qualifying?",
@@ -443,3 +443,40 @@ UI["en"].update(
     rating_method="Stars are the Google Maps average and review count, read on each track's listing on 25 November 2026. They rate the whole venue (staff, facilities, karts), not just the price, and they change over time: tap the rating to see the current listing.",
     phases_method="For each race we split out the phases the track publishes (practice or warm-up, qualifying and race) and whether they run on minutes or laps. We only add up “minutes on track” when every phase is timed; if the race runs on laps we show the known minutes plus “+ laps”, without guessing how long they take.",
 )
+
+# ---- Fases extra (prefinal, final, vueltas libres) y bandera de carreras infantiles ----
+for _L, _st, _ph, _fl, _fll in [
+    ("es", {"freelaps": "{n} vueltas libres", "prefinal": "{n} min prefinal", "prefinallaps": "prefinal de {n} vueltas",
+            "final": "{n} min final", "finallaps": "final de {n} vueltas"},
+     {"freelaps": "Libres", "prefinal": "Prefinal", "prefinallaps": "Prefinal", "final": "Final", "finallaps": "Final"},
+     "infantil", "Formato para niños: no sale en el buscador de adultos."),
+    ("ca", {"freelaps": "{n} voltes lliures", "prefinal": "{n} min prefinal", "prefinallaps": "prefinal de {n} voltes",
+            "final": "{n} min final", "finallaps": "final de {n} voltes"},
+     {"freelaps": "Lliures", "prefinal": "Prefinal", "prefinallaps": "Prefinal", "final": "Final", "finallaps": "Final"},
+     "infantil", "Format per a nens: no surt al cercador d'adults."),
+    ("en", {"freelaps": "{n} practice laps", "prefinal": "{n} min pre-final", "prefinallaps": "{n}-lap pre-final",
+            "final": "{n} min final", "finallaps": "{n}-lap final"},
+     {"freelaps": "Practice", "prefinal": "Pre-final", "prefinallaps": "Pre-final", "final": "Final", "finallaps": "Final"},
+     "kids", "Kids' format: not shown in the adult finder."),
+]:
+    UI[_L]["struct"].update(_st)
+    UI[_L]["ph"].update(_ph)
+    UI[_L]["flag"]["junior"] = _fl
+    UI[_L]["flag_long"]["junior"] = _fll
+
+# ---- Bandera «por equipo» y pregunta sobre minutos en pista en carreras ----
+for _L, _fl, _fll, _q, _a in [
+    ("es", "por equipo", "Precio por equipo, no por persona: no sale en el buscador por persona.",
+     "¿Qué carrera con amigos da más minutos en pista por euro?",
+     "Contando solo carreras que van todo por tiempo, la Promo GP F3 de Karting Sallent: 30 € por 10 min de quali + 10 de carrera (1,50 €/min en pista), de miércoles a viernes no festivos y desde 4 personas; ojo, su PDF de marzo de 2026 dice que la carrera es de 10 vueltas. Sin promoción, el Super Gran Premio de Karting Cardedeu o de Karting Empuriabrava: 65 € por 40 min en pista (10 libres + 10 quali + 2 carreras de 10), 1,63 €/min, desde 8 personas. Muchas carreras van por vueltas y no publican cuánto duran, así que no se pueden comparar por minuto."),
+    ("ca", "per equip", "Preu per equip, no per persona: no surt al cercador per persona.",
+     "Quina cursa amb amics dona més minuts a pista per euro?",
+     "Comptant només curses que van tot per temps, la Promo GP F3 del Karting Sallent: 30 € per 10 min de quali + 10 de cursa (1,50 €/min a pista), de dimecres a divendres no festius i des de 4 persones; compte, el seu PDF de març de 2026 diu que la cursa és de 10 voltes. Sense promoció, el Super Gran Premi del Karting Cardedeu o del Karting Empuriabrava: 65 € per 40 min a pista (10 lliures + 10 quali + 2 curses de 10), 1,63 €/min, des de 8 persones. Moltes curses van per voltes i no publiquen quant duren, així que no es poden comparar per minut."),
+    ("en", "per team", "Price per team, not per person: not shown in the per-person finder.",
+     "Which race with friends gives the most minutes on track per euro?",
+     "Counting only races that are fully timed, Karting Sallent's Promo GP F3: €30 for 10 min of qualifying + 10 min of racing (€1.50/min on track), Wednesday to Friday except holidays, from 4 people; note its March 2026 PDF says the race is 10 laps. Without a promotion, the Super Gran Premio at Karting Cardedeu or Karting Empuriabrava: €65 for 40 min on track (10 practice + 10 qualifying + 2 × 10 race), €1.63/min, from 8 people. Many races run on laps and do not publish how long they last, so they cannot be compared per minute."),
+]:
+    UI[_L]["flag"]["team"] = _fl
+    UI[_L]["flag_long"]["team"] = _fll
+    UI[_L]["faq"] = list(UI[_L]["faq"])
+    UI[_L]["faq"].insert(1, (_q, _a))
