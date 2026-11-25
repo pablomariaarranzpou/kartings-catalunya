@@ -7,9 +7,9 @@ OUT = ROOT / "assets"
 OUT.mkdir(exist_ok=True)
 
 TEXT = {
-    "es": ("KARTINGS EN CATALUÑA", "Precios 2026 · €/min · carreras con quali", "Barcelona · Girona · Tarragona · Lleida", "Datos consultados el 25/11/2026"),
-    "ca": ("KÀRTINGS A CATALUNYA", "Preus 2026 · €/min · curses amb quali", "Barcelona · Girona · Tarragona · Lleida", "Dades consultades el 25/11/2026"),
-    "en": ("GO-KARTING IN CATALONIA", "2026 prices · €/min · races with qualifying", "Barcelona · Girona · Tarragona · Lleida", "Data checked on 25/11/2026"),
+    "es": ("Karting en Cataluña", "Precios 2026 · €/min · carreras con quali", "Barcelona · Girona · Tarragona · Lleida", "Datos consultados el 25/11/2026"),
+    "ca": ("Kàrting a Catalunya", "Preus 2026 · €/min · curses amb quali", "Barcelona · Girona · Tarragona · Lleida", "Dades consultades el 25/11/2026"),
+    "en": ("Go-karting in Catalonia", "2026 prices · €/min · races with qualifying", "Barcelona · Girona · Tarragona · Lleida", "Data checked on 25/11/2026"),
 }
 
 
@@ -27,35 +27,29 @@ BODY = ["C:/Windows/Fonts/segoeui.ttf", "C:/Windows/Fonts/arial.ttf"]
 MONO = ["C:/Windows/Fonts/consola.ttf", "C:/Windows/Fonts/cour.ttf"]
 
 for lang, (title, sub, provs, date) in TEXT.items():
-    im = Image.new("RGB", (1200, 630), "#15171a")
+    im = Image.new("RGB", (1200, 630), "#ffffff")
     d = ImageDraw.Draw(im)
-    for i in range(0, 1200, 60):  # piano rojo/blanco
-        d.rectangle([i, 0, i + 30, 22], fill="#d4261c")
-        d.rectangle([i + 30, 0, i + 60, 22], fill="#ffffff")
-        d.rectangle([i, 608, i + 30, 630], fill="#d4261c")
-        d.rectangle([i + 30, 608, i + 60, 630], fill="#ffffff")
-    f_title = font(DISPLAY, 96)
-    try:
-        f_title.set_variation_by_name("Bold Condensed")
-    except Exception:
-        pass
-    d.text((70, 120), title, font=f_title, fill="#f1f2f4")
-    d.text((70, 250), sub, font=font(BODY, 44), fill="#c9a3ff")
-    d.text((70, 320), provs, font=font(BODY, 34), fill="#a3a9b1")
-    # Torre de tiempos mínima
-    d.rounded_rectangle([70, 410, 560, 540], 8, fill="#08090a", outline="#2c3035")
-    d.rectangle([90, 438, 140, 470], fill="#d4261c")
-    d.text((100, 440), "P1", font=font(MONO, 26), fill="#ffffff")
-    d.text((160, 438), "1,20 €/min" if lang != "en" else "€1.20/min", font=font(MONO, 34), fill="#c9a3ff")
-    d.text((90, 492), date, font=font(MONO, 24), fill="#a3a9b1")
+    f_brand = font(DISPLAY, 40)
+    d.text((80, 70), "karting", font=f_brand, fill="#111111")
+    w = d.textlength("karting", font=f_brand)
+    d.text((80 + w, 70), ".cat", font=f_brand, fill="#8a8d92")
+    f_title = font(DISPLAY, 92)
+    t = title
+    d.text((80, 190), t, font=f_title, fill="#111111")
+    f_sub = font(BODY, 42)
+    d.rectangle([80, 330, 80 + d.textlength(sub, font=f_sub), 352 + 28], fill="#ffd84d")
+    d.text((80, 318), sub, font=f_sub, fill="#111111")
+    d.text((80, 410), provs, font=font(BODY, 34), fill="#5f6368")
+    d.line([80, 520, 1120, 520], fill="#111111", width=2)
+    d.text((80, 545), date, font=font(BODY, 28), fill="#5f6368")
     im.save(OUT / f"og-{lang}.png", optimize=True)
 
 (OUT / "favicon.svg").write_text(
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">'
-    '<rect width="32" height="32" rx="6" fill="#15171a"/>'
+    '<rect width="32" height="32" rx="6" fill="#111111"/>'
     '<g fill="#fff"><rect x="6" y="6" width="5" height="5"/><rect x="16" y="6" width="5" height="5"/>'
     '<rect x="11" y="11" width="5" height="5"/><rect x="21" y="11" width="5" height="5"/>'
     '<rect x="6" y="16" width="5" height="5"/><rect x="16" y="16" width="5" height="5"/>'
     '<rect x="11" y="21" width="5" height="5"/><rect x="21" y="21" width="5" height="5"/></g>'
-    '<rect x="4" y="4" width="3" height="25" fill="#d4261c"/></svg>\n', encoding="utf-8")
+    '<rect x="4" y="4" width="3" height="25" fill="#ffd84d"/></svg>\n', encoding="utf-8")
 print("ok")
