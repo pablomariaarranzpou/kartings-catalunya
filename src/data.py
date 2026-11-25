@@ -712,3 +712,21 @@ EXCLUDED = [
 ]
 
 LEAGUE = dict(name="SKC Cataluña (Soul Racing Kart)", src="https://soulracingkart.com/skc2026/")
+
+# Zona para el buscador y ubicación aproximada (centro del municipio o tramo de carretera;
+# sirve para calcular distancias en línea recta, no para llegar).
+ZONES = ["bcn", "central", "south", "brava", "lleida"]
+GEO = {
+    "ikb": ("bcn", 41.381, 2.045), "gene": ("bcn", 41.314, 2.014), "minilandia": ("bcn", 41.314, 2.014),
+    "cardedeu": ("bcn", 41.639, 2.358), "nurburgreen": ("bcn", 41.630, 2.296), "kartodrom": ("bcn", 41.590, 2.240),
+    "penedes": ("central", 41.346, 1.698), "sallent": ("central", 41.826, 1.895), "osona": ("central", 41.930, 2.255),
+    "parcmotor": ("central", 41.598, 1.700),
+    "altafulla": ("south", 41.142, 1.377), "tarraco": ("south", 41.119, 1.245), "salou": ("south", 41.076, 1.140),
+    "electricsalou": ("south", 41.076, 1.140), "vendrell": ("south", 41.219, 1.535), "comarruga": ("south", 41.183, 1.522),
+    "calafat": ("south", 40.930, 0.840),
+    "empuriabrava": ("brava", 42.247, 3.120), "cross": ("brava", 42.250, 3.070), "roses": ("brava", 42.262, 3.176),
+    "lescala": ("brava", 42.125, 3.131), "palamos": ("brava", 41.846, 3.129), "lloret": ("brava", 41.700, 2.845),
+    "blanes": ("brava", 41.674, 2.790), "regencos": ("brava", 41.950, 3.170),
+    "elpla": ("lleida", 42.316, 1.396), "zona": ("lleida", 41.565, 0.830), "c5584": ("lleida", 41.729, 0.744),
+}
+BARCELONA = (41.3874, 2.1686)
