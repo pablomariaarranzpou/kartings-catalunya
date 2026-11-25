@@ -31,6 +31,17 @@ git add -A && git commit -m "Actualiza precios" && git push
 
 Precios orientativos recopilados de fuentes públicas; pueden cambiar sin aviso. Esta web no tiene relación con ningún karting.
 
+## Indexar en Google (dirección de GitHub Pages)
+
+1. En https://search.google.com/search-console elige **Prefijo de la URL** y pon
+   `https://pablomariaarranzpou.github.io/kartings-catalunya/` (la propiedad de dominio no sirve para github.io).
+2. Método **Etiqueta HTML**: copia el valor de `content="..."` en `GOOGLE_VERIFY` de `src/build.py`,
+   ejecuta `python src/build.py`, haz push y espera a que se publique Pages.
+3. Pulsa **Verificar**. Después, en Sitemaps, envía `sitemap.xml`.
+4. Opcional: Inspección de URLs → «Solicitar indexación» para la portada y `karting-barcelona/`.
+
+Cuando pases a kartings.cat, GitHub redirige la dirección github.io al dominio y Google sigue esa redirección.
+
 ## Cuando compres kartings.cat
 
 No lo actives antes: si el CNAME apunta a un dominio que aún no resuelve, la web deja de verse.

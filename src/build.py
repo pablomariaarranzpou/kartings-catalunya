@@ -18,6 +18,8 @@ ROOT = Path(__file__).resolve().parent.parent
 # Cambia BASE a "https://kartings.cat/" cuando el dominio apunte a GitHub Pages (pasos en el README).
 BASE = "https://pablomariaarranzpou.github.io/kartings-catalunya/"
 BRAND = "kartings.cat"
+# Google Search Console: pega aquí el valor "content" de la etiqueta HTML de verificación
+GOOGLE_VERIFY = ""
 REPO = "https://github.com/pablomariaarranzpou/kartings-catalunya"
 PATHS = {"es": "", "ca": "ca/", "en": "en/"}
 DATE_TXT = {"es": "25 de noviembre de 2026", "ca": "25 de novembre de 2026", "en": "25 November 2026"}
@@ -687,6 +689,7 @@ def head(L):
     og_alt = "".join(f'<meta property="og:locale:alternate" content="{LOCALE[x]}">' for x in LANGS if x != L)
     img = f"{BASE}assets/og-{L}.png"
     pre = CTX["rel"]
+    gsv = f'<meta name="google-site-verification" content="{e(GOOGLE_VERIFY)}">\n' if GOOGLE_VERIFY else ''
     return f'''<!doctype html>
 <html lang="{L}">
 <head>
@@ -695,7 +698,7 @@ def head(L):
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="{url}">
+{gsv}<link rel="canonical" href="{url}">
 {alts}
 <meta property="og:type" content="website">
 <meta property="og:url" content="{url}">
