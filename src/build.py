@@ -261,6 +261,7 @@ def row_html(k, L, pid, mode, data, big, sub, extra, line, flags, src, dkm, zone
     fl = flag_txt(sorted(set(flags)), L, skip=("noyear",))
     return f'''<li class="res" data-mode="{mode}" data-k="{k["id"]}" data-zone="{zone}" data-lat="{la}" data-lon="{lo}"{attrs}{" hidden" if hidden else ""}>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#{pid("k-" + k["id"])}">{e(k["name"])}</a> {stars_html(k, L)}</h3>
     <p class="r-meta">{e(meta)}</p>
     {f'<p class="r-line">{e(line)}</p>' if line else ""}
@@ -268,7 +269,7 @@ def row_html(k, L, pid, mode, data, big, sub, extra, line, flags, src, dkm, zone
     {f'<p class="r-cond">{e(cond)}</p>' if cond else ""}
     {f'<p class="r-flags">{fl}</p>' if fl else ""}
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>{e(big)}</strong><span class="r-sub">{e(sub)}</span>{extra}</div>
+  <div class="r-price"><strong>{e(big)}</strong><span class="r-sub">{e(sub)}</span>{extra}</div>
   <div class="r-foot"><span class="dist">{e(u["from_bcn"].format(km=dkm))}</span>{link(src, u["see_price"])}</div>
 </li>'''
 

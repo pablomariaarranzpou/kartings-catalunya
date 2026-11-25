@@ -128,8 +128,9 @@ a.stars:hover small{text-decoration:underline}
 .r-total{color:var(--ink);font-weight:600}
 .r-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:.86rem;color:var(--muted)}
 .r-foot a.src{margin-left:auto}
-.badge{font-size:.72rem;font-weight:700;letter-spacing:.02em;background:var(--ink);color:var(--bg);border-radius:999px;padding:.2rem .55rem;margin-bottom:4px}
-.res.top .r-price strong{background:linear-gradient(transparent 52%,var(--hi) 52%);color:var(--ink)}
+.badge{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--hi);color:var(--hi-ink);border-radius:6px;padding:.32rem .55rem;margin-bottom:8px}
+.res.top{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:12px -20px;box-shadow:inset 4px 0 0 var(--hi)}
+.res.top + .res{border-top:0}
 a.src{font-size:.82rem;font-weight:600;white-space:nowrap}
 a.src::after{content:" ↗";font-weight:400}
 
@@ -190,7 +191,8 @@ a.web{font-weight:600}
 .tbl .rk{color:var(--muted);width:2.5rem;text-align:left}
 .tbl tbody tr:last-child>*{border-bottom:0}
 .tbl tr.best .hl{font-weight:800}
-.tbl tr.best .hl{background:linear-gradient(transparent 50%,var(--hi) 50%);color:var(--hi-ink)}
+.tbl tr.best .hl{background:var(--hi);color:var(--hi-ink);font-weight:800}
+.tbl tr.best .rk{background:var(--hi);color:var(--hi-ink);font-weight:800}
 .keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:24px;margin-top:1rem}
 .keys p{margin:.35rem 0 0;color:var(--muted);font-size:.95rem}
 
@@ -222,7 +224,7 @@ a.web{font-weight:600}
   .ctl select{min-width:0;width:100%}
   .res{grid-template-columns:1fr}
   .r-price{text-align:left;align-items:flex-start;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
-  .r-price .badge{order:-1;flex-basis:100%;max-width:max-content}
+  .res.top{margin:10px 0;padding:16px}
   .k summary{grid-template-columns:minmax(0,1fr) auto}
   .k-meta{grid-column:1/-1;grid-row:2}
   .k-from{grid-column:2;grid-row:1}
@@ -267,6 +269,7 @@ a.web{font-weight:600}
   <p class="geo-msg" hidden></p>
   <ol class="results"><li class="res" data-mode="session" data-k="penedes" data-zone="central" data-lat="41.346" data-lon="1.698" data-price="19" data-eurmin="1.90" data-mins="10" data-stars="4.0" data-reviews="800">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-penedes">Scratch Indoor Karting Penedès</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Scratch%20Indoor%20Karting%20Pened%C3%A8s%20Vilafranca%20del%20Pened%C3%A8s" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(800 reviews)</small></a></h3>
     <p class="r-meta">Vilafranca del Penedès · Indoor · Honda 270 cc (9 CV)</p>
     <p class="r-line">Adult Sport</p>
@@ -274,10 +277,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€19</strong><span class="r-sub">10 min · €1.90/min</span></div>
+  <div class="r-price"><strong>€19</strong><span class="r-sub">10 min · €1.90/min</span></div>
   <div class="r-foot"><span class="dist">≈ 40 km from Barcelona</span><a class="src" href="https://kartingpenedes.com/tarifas" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="sallent" data-zone="central" data-lat="41.826" data-lon="1.895" data-price="20" data-eurmin="2.00" data-mins="10" data-stars="4.4" data-reviews="1028">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-sallent">Karting Sallent</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Sallent%20Sallent" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(1,028 reviews)</small></a></h3>
     <p class="r-meta">Sallent · Outdoor · Sodikart SR4 Honda</p>
     <p class="r-line">Kart Speed</p>
@@ -285,10 +289,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€20</strong><span class="r-sub">10 min · €2.00/min</span></div>
+  <div class="r-price"><strong>€20</strong><span class="r-sub">10 min · €2.00/min</span></div>
   <div class="r-foot"><span class="dist">≈ 55 km from Barcelona</span><a class="src" href="https://www.kartingsallent.com/correr-en-kart/tanda-10-kart-speed/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="osona" data-zone="central" data-lat="41.93" data-lon="2.255" data-price="20" data-eurmin="2.00" data-mins="10" data-stars="4.3" data-reviews="551">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-osona">Circuit d&#x27;Osona</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Circuit%20d%27Osona%20Vic" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.3 <small>(551 reviews)</small></a></h3>
     <p class="r-meta">Vic · Outdoor · SODI RX7 Honda GX 390 cc</p>
     <p class="r-line">Sènior 390 cc</p>
@@ -296,10 +301,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€20</strong><span class="r-sub">10 min · €2.00/min</span><span class="r-pack">With a pack: €1.70/min</span></div>
+  <div class="r-price"><strong>€20</strong><span class="r-sub">10 min · €2.00/min</span><span class="r-pack">With a pack: €1.70/min</span></div>
   <div class="r-foot"><span class="dist">≈ 60 km from Barcelona</span><a class="src" href="https://www.circuitosona.com/lloguer-kart/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="osona" data-zone="central" data-lat="41.93" data-lon="2.255" data-price="36" data-eurmin="1.80" data-mins="20" data-stars="4.3" data-reviews="551" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-osona">Circuit d&#x27;Osona</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Circuit%20d%27Osona%20Vic" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.3 <small>(551 reviews)</small></a></h3>
     <p class="r-meta">Vic · Outdoor · SODI RX7 Honda GX 390 cc</p>
     <p class="r-line">Sènior 390 cc · 20-minute ticket · not stated whether the minutes are consecutive</p>
@@ -307,10 +313,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€36</strong><span class="r-sub">20 min · €1.80/min</span><span class="r-pack">With a pack: €1.70/min</span></div>
+  <div class="r-price"><strong>€36</strong><span class="r-sub">20 min · €1.80/min</span><span class="r-pack">With a pack: €1.70/min</span></div>
   <div class="r-foot"><span class="dist">≈ 60 km from Barcelona</span><a class="src" href="https://www.circuitosona.com/lloguer-kart/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="parcmotor" data-zone="central" data-lat="41.598" data-lon="1.7" data-price="22" data-eurmin="2.20" data-mins="10" data-stars="4.5" data-reviews="2504">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-parcmotor">Karting Parcmotor Castellolí</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Parcmotor%20Castellol%C3%AD%20Castellol%C3%AD" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(2,504 reviews)</small></a></h3>
     <p class="r-meta">Castellolí · Outdoor · site mentions 400 cc and GTR 270 cc</p>
     
@@ -318,10 +325,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€22</strong><span class="r-sub">10 min · €2.20/min</span><span class="r-pack">With a pack: €1.80/min</span></div>
+  <div class="r-price"><strong>€22</strong><span class="r-sub">10 min · €2.20/min</span><span class="r-pack">With a pack: €1.80/min</span></div>
   <div class="r-foot"><span class="dist">≈ 45 km from Barcelona</span><a class="src" href="https://www.kartingparcmotor.com/alquiler-karts" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="cardedeu" data-zone="bcn" data-lat="41.639" data-lon="2.358" data-price="22" data-eurmin="2.20" data-mins="10" data-stars="4.2" data-reviews="2360">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-cardedeu">Karting Cardedeu</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Cardedeu%20Cardedeu" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(2,360 reviews)</small></a></h3>
     <p class="r-meta">Cardedeu · Outdoor · GT/SR Honda 270 cc (11 CV)</p>
     
@@ -329,10 +337,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€22</strong><span class="r-sub">10 min · €2.20/min</span><span class="r-pack">With a pack: €1.25/min</span></div>
+  <div class="r-price"><strong>€22</strong><span class="r-sub">10 min · €2.20/min</span><span class="r-pack">With a pack: €1.25/min</span></div>
   <div class="r-foot"><span class="dist">≈ 30 km from Barcelona</span><a class="src" href="https://www.kartingcardedeu.com/wp-content/uploads/2026/03/tarifa-de-precios-CAST-scaled.jpg" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="nurburgreen" data-zone="bcn" data-lat="41.63" data-lon="2.296" data-price="22" data-eurmin="2.75" data-mins="8" data-stars="4.7" data-reviews="1112">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-nurburgreen">Nürburgreen Indoor</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=N%C3%BCrburgreen%20Indoor%20-%20Karting%20Electric%20Les%20Franqueses%20del%20Vall%C3%A8s" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.7 <small>(1,112 reviews)</small></a></h3>
     <p class="r-meta">Les Franqueses del Vallès · Indoor (electric) · electric brushless, BRB chassis</p>
     <p class="r-line">Speed Kart</p>
@@ -340,10 +349,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€22</strong><span class="r-sub">8 min · €2.75/min</span><span class="r-pack">With a pack: €1.38/min</span></div>
+  <div class="r-price"><strong>€22</strong><span class="r-sub">8 min · €2.75/min</span><span class="r-pack">With a pack: €1.38/min</span></div>
   <div class="r-foot"><span class="dist">≈ 30 km from Barcelona</span><a class="src" href="https://nurburgreen.net/wp-content/uploads/2026/10/TARIFAS-NUR-2026-scaled.png" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="ikb" data-zone="bcn" data-lat="41.381" data-lon="2.045" data-price="21" data-eurmin="2.63" data-mins="8" data-stars="4.2" data-reviews="7292">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-ikb">Indoor Karting Barcelona</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Indoor%20Karting%20Barcelona%20Sant%20Feliu%20de%20Llobregat" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(7,292 reviews)</small></a></h3>
     <p class="r-meta">Sant Feliu de Llobregat · Indoor · petrol Sodikart</p>
     
@@ -351,10 +361,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€21</strong><span class="r-sub">8 min · €2.63/min</span><span class="r-pack">With a pack: €2.31/min</span></div>
+  <div class="r-price"><strong>€21</strong><span class="r-sub">8 min · €2.63/min</span><span class="r-pack">With a pack: €2.31/min</span></div>
   <div class="r-foot"><span class="dist">≈ 10 km from Barcelona</span><a class="src" href="https://indoorkartingbarcelona.com/sesiones-y-partidas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="gene" data-zone="bcn" data-lat="41.31024" data-lon="2.02659" data-price="18" data-eurmin="2.25" data-mins="8" data-stars="4.2" data-reviews="1297">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-gene">Gené Karting</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Gen%C3%A9%20Karting%20Viladecans" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(1,297 reviews)</small></a></h3>
     <p class="r-meta">Viladecans · Indoor</p>
     <p class="r-line">Monday to Friday</p>
@@ -362,10 +373,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€18</strong><span class="r-sub">8 min · €2.25/min</span></div>
+  <div class="r-price"><strong>€18</strong><span class="r-sub">8 min · €2.25/min</span></div>
   <div class="r-foot"><span class="dist">≈ 15 km from Barcelona</span><a class="src" href="https://barcelonagenekarting.com/el-karting/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="gene" data-zone="bcn" data-lat="41.31024" data-lon="2.02659" data-price="20" data-eurmin="2.50" data-mins="8" data-stars="4.2" data-reviews="1297" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-gene">Gené Karting</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Gen%C3%A9%20Karting%20Viladecans" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(1,297 reviews)</small></a></h3>
     <p class="r-meta">Viladecans · Indoor</p>
     <p class="r-line">weekends and holidays</p>
@@ -373,10 +385,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€20</strong><span class="r-sub">8 min · €2.50/min</span></div>
+  <div class="r-price"><strong>€20</strong><span class="r-sub">8 min · €2.50/min</span></div>
   <div class="r-foot"><span class="dist">≈ 15 km from Barcelona</span><a class="src" href="https://barcelonagenekarting.com/el-karting/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="minilandia" data-zone="bcn" data-lat="41.27566" data-lon="2.04766" data-price="16.9" data-eurmin="2.41" data-mins="7" data-stars="4.0" data-reviews="1992">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-minilandia">Karting Minilandia</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Minilandia%2C%20Parc%20Recreatiu.%20Viladecans" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(1,992 reviews)</small></a></h3>
     <p class="r-meta">Viladecans · Outdoor · Honda 270 cc 4T</p>
     
@@ -384,10 +397,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€16.90</strong><span class="r-sub">7 min · €2.41/min</span><span class="r-pack">With a pack: €2.04/min</span></div>
+  <div class="r-price"><strong>€16.90</strong><span class="r-sub">7 min · €2.41/min</span><span class="r-pack">With a pack: €2.04/min</span></div>
   <div class="r-foot"><span class="dist">≈ 16 km from Barcelona</span><a class="src" href="https://www.kartingminilandia.com/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="altafulla" data-zone="south" data-lat="41.14061" data-lon="1.38345" data-price="21" data-eurmin="2.63" data-mins="8" data-stars="4.2" data-reviews="384">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-altafulla">Karting Altafulla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Altafulla%20Altafulla" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(384 reviews)</small></a></h3>
     <p class="r-meta">Altafulla · Outdoor · “Fórmula” petrol kart</p>
     <p class="r-line">Fórmula</p>
@@ -395,10 +409,11 @@ a.web{font-weight:600}
     
     <p class="r-flags"><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€21</strong><span class="r-sub">8 min · €2.63/min</span></div>
+  <div class="r-price"><strong>€21</strong><span class="r-sub">8 min · €2.63/min</span></div>
   <div class="r-foot"><span class="dist">≈ 70 km from Barcelona</span><a class="src" href="https://www.kartingaltafulla.com/es/preus/llistat-de-preus/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="tarraco" data-zone="south" data-lat="41.11394" data-lon="1.23231" data-price="24" data-eurmin="2.40" data-mins="10" data-stars="4.5" data-reviews="1028">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-tarraco">Tarraco Karting</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Tarraco%20Karting%20Tarragona" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(1,028 reviews)</small></a></h3>
     <p class="r-meta">Tarragona · Indoor + outdoor · Senior 270 cc (11 CV)</p>
     <p class="r-line">Senior</p>
@@ -406,10 +421,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€24</strong><span class="r-sub">10 min · €2.40/min</span><span class="r-pack">With a pack: €2.00/min</span></div>
+  <div class="r-price"><strong>€24</strong><span class="r-sub">10 min · €2.40/min</span><span class="r-pack">With a pack: €2.00/min</span></div>
   <div class="r-foot"><span class="dist">≈ 85 km from Barcelona</span><a class="src" href="https://tarracokarting.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="salou" data-zone="south" data-lat="41.09211" data-lon="1.1297" data-price="22.5" data-eurmin="2.81" data-mins="8" data-stars="4.5" data-reviews="3782">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-salou">Karting Salou</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Salou%20Salou" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(3,782 reviews)</small></a></h3>
     <p class="r-meta">Salou · Outdoor</p>
     <p class="r-line">low season</p>
@@ -417,10 +433,11 @@ a.web{font-weight:600}
     
     <p class="r-flags"><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€22.50</strong><span class="r-sub">8 min · €2.81/min</span></div>
+  <div class="r-price"><strong>€22.50</strong><span class="r-sub">8 min · €2.81/min</span></div>
   <div class="r-foot"><span class="dist">≈ 95 km from Barcelona</span><a class="src" href="https://kartingsalou.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="salou" data-zone="south" data-lat="41.09211" data-lon="1.1297" data-price="25" data-eurmin="3.13" data-mins="8" data-stars="4.5" data-reviews="3782" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-salou">Karting Salou</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Salou%20Salou" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(3,782 reviews)</small></a></h3>
     <p class="r-meta">Salou · Outdoor</p>
     <p class="r-line">high season</p>
@@ -428,10 +445,11 @@ a.web{font-weight:600}
     
     <p class="r-flags"><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€25</strong><span class="r-sub">8 min · €3.13/min</span></div>
+  <div class="r-price"><strong>€25</strong><span class="r-sub">8 min · €3.13/min</span></div>
   <div class="r-foot"><span class="dist">≈ 95 km from Barcelona</span><a class="src" href="https://kartingsalou.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="calafat" data-zone="south" data-lat="40.92647" data-lon="0.83753" data-price="18" data-eurmin="2.25" data-mins="8" data-stars="4.0" data-reviews="300">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-calafat">Karting Calafat</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Calafat%20L%27Ametlla%20de%20Mar" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(300 reviews)</small></a></h3>
     <p class="r-meta">L&#x27;Ametlla de Mar · Outdoor · Sodi GT5 270 cc</p>
     <p class="r-line">Sodi · low season</p>
@@ -439,10 +457,11 @@ a.web{font-weight:600}
     
     <p class="r-flags"><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€18</strong><span class="r-sub">8 min · €2.25/min</span></div>
+  <div class="r-price"><strong>€18</strong><span class="r-sub">8 min · €2.25/min</span></div>
   <div class="r-foot"><span class="dist">≈ 125 km from Barcelona</span><a class="src" href="https://karting.circuitcalafat.com/rates" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="calafat" data-zone="south" data-lat="40.92647" data-lon="0.83753" data-price="20" data-eurmin="2.50" data-mins="8" data-stars="4.0" data-reviews="300" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-calafat">Karting Calafat</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Calafat%20L%27Ametlla%20de%20Mar" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(300 reviews)</small></a></h3>
     <p class="r-meta">L&#x27;Ametlla de Mar · Outdoor · Sodi GT5 270 cc</p>
     <p class="r-line">Sodi · high season</p>
@@ -450,10 +469,11 @@ a.web{font-weight:600}
     
     <p class="r-flags"><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€20</strong><span class="r-sub">8 min · €2.50/min</span></div>
+  <div class="r-price"><strong>€20</strong><span class="r-sub">8 min · €2.50/min</span></div>
   <div class="r-foot"><span class="dist">≈ 125 km from Barcelona</span><a class="src" href="https://karting.circuitcalafat.com/rates" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="calafat" data-zone="south" data-lat="40.92647" data-lon="0.83753" data-price="28" data-eurmin="3.50" data-mins="8" data-stars="4.0" data-reviews="300" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-calafat">Karting Calafat</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Calafat%20L%27Ametlla%20de%20Mar" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(300 reviews)</small></a></h3>
     <p class="r-meta">L&#x27;Ametlla de Mar · Outdoor · Sodi GT5 270 cc</p>
     <p class="r-line">Racing 420 cc · low season</p>
@@ -461,10 +481,11 @@ a.web{font-weight:600}
     
     <p class="r-flags"><span class="flag" title="The same site gives two different figures.">conflict</span><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€28</strong><span class="r-sub">8 min · €3.50/min</span></div>
+  <div class="r-price"><strong>€28</strong><span class="r-sub">8 min · €3.50/min</span></div>
   <div class="r-foot"><span class="dist">≈ 125 km from Barcelona</span><a class="src" href="https://karting.circuitcalafat.com/rates" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="vendrell" data-zone="south" data-lat="41.19822" data-lon="1.52869" data-price="21" data-eurmin="2.10" data-mins="10" data-stars="4.3" data-reviews="2894">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-vendrell">Karting Vendrell</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Vendrell%20El%20Vendrell" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.3 <small>(2,894 reviews)</small></a></h3>
     <p class="r-meta">El Vendrell · Outdoor</p>
     <p class="r-line">Formula kart · booked online; €24 at the track</p>
@@ -472,10 +493,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€21</strong><span class="r-sub">10 min · €2.10/min</span></div>
+  <div class="r-price"><strong>€21</strong><span class="r-sub">10 min · €2.10/min</span></div>
   <div class="r-foot"><span class="dist">≈ 55 km from Barcelona</span><a class="src" href="https://kartingvendrell.com/tienda/alquiler-kart-formula/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="vendrell" data-zone="south" data-lat="41.19822" data-lon="1.52869" data-price="24" data-eurmin="2.40" data-mins="10" data-stars="4.3" data-reviews="2894" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-vendrell">Karting Vendrell</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Vendrell%20El%20Vendrell" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.3 <small>(2,894 reviews)</small></a></h3>
     <p class="r-meta">El Vendrell · Outdoor</p>
     <p class="r-line">Super Kart 400 cc · booked online; €27 at the track</p>
@@ -483,10 +505,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€24</strong><span class="r-sub">10 min · €2.40/min</span></div>
+  <div class="r-price"><strong>€24</strong><span class="r-sub">10 min · €2.40/min</span></div>
   <div class="r-foot"><span class="dist">≈ 55 km from Barcelona</span><a class="src" href="https://kartingvendrell.com/tienda/alquiler-superkart/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="empuriabrava" data-zone="brava" data-lat="42.26012" data-lon="3.11207" data-price="22" data-eurmin="2.20" data-mins="10" data-stars="4.5" data-reviews="1020">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-empuriabrava">Karting Empuriabrava</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Empuriabrava%20Empuriabrava" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(1,020 reviews)</small></a></h3>
     <p class="r-meta">Empuriabrava (Castelló d&#x27;Empúries) · Outdoor · SR4 Honda 270 cc (11 CV)</p>
     
@@ -494,10 +517,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€22</strong><span class="r-sub">10 min · €2.20/min</span><span class="r-pack">With a pack: €1.67/min</span></div>
+  <div class="r-price"><strong>€22</strong><span class="r-sub">10 min · €2.20/min</span><span class="r-pack">With a pack: €1.67/min</span></div>
   <div class="r-foot"><span class="dist">≈ 125 km from Barcelona</span><a class="src" href="https://kartingempuriabrava.com/wp-content/uploads/2026/03/tarifa-de-precios-CAST-scaled.jpg" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="cross" data-zone="brava" data-lat="42.25" data-lon="3.07" data-price="19" data-eurmin="2.71" data-mins="7" data-stars="4.4" data-reviews="796">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-cross">Karting Cross Empuriabrava</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Cross%20Costa%20Brava%20Empuriabrava" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(796 reviews)</small></a></h3>
     <p class="r-meta">Empuriabrava (C-260 km 39) · Outdoor · Superkart</p>
     <p class="r-line">Superkart</p>
@@ -505,10 +529,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€19</strong><span class="r-sub">7 min · €2.71/min</span></div>
+  <div class="r-price"><strong>€19</strong><span class="r-sub">7 min · €2.71/min</span></div>
   <div class="r-foot"><span class="dist">≈ 120 km from Barcelona</span><a class="src" href="https://www.kartingcrossempuriabrava.com/ticket-tanda-karting" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="cross" data-zone="brava" data-lat="42.25" data-lon="3.07" data-price="29" data-eurmin="2.07" data-mins="14" data-stars="4.4" data-reviews="796" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-cross">Karting Cross Empuriabrava</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Cross%20Costa%20Brava%20Empuriabrava" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(796 reviews)</small></a></h3>
     <p class="r-meta">Empuriabrava (C-260 km 39) · Outdoor · Superkart</p>
     <p class="r-line">Superkart</p>
@@ -516,10 +541,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€29</strong><span class="r-sub">14 min · €2.07/min</span></div>
+  <div class="r-price"><strong>€29</strong><span class="r-sub">14 min · €2.07/min</span></div>
   <div class="r-foot"><span class="dist">≈ 120 km from Barcelona</span><a class="src" href="https://www.kartingcrossempuriabrava.com/ticket-tanda-karting" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="roses" data-zone="brava" data-lat="42.27777" data-lon="3.1589" data-price="13" data-eurmin="" data-mins="" data-stars="4.2" data-reviews="2052">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-roses">Karting Roses</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Roses%20Roses" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(2,052 reviews)</small></a></h3>
     <p class="r-meta">Roses · Outdoor · F2 Honda 270 cc; F1 400 cc</p>
     <p class="r-line">F2 Sport 270 cc</p>
@@ -527,10 +553,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€13</strong><span class="r-sub">length not published</span></div>
+  <div class="r-price"><strong>€13</strong><span class="r-sub">length not published</span></div>
   <div class="r-foot"><span class="dist">≈ 130 km from Barcelona</span><a class="src" href="https://kartingroses.com/1323-2/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="roses" data-zone="brava" data-lat="42.27777" data-lon="3.1589" data-price="20" data-eurmin="" data-mins="" data-stars="4.2" data-reviews="2052" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-roses">Karting Roses</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Roses%20Roses" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(2,052 reviews)</small></a></h3>
     <p class="r-meta">Roses · Outdoor · F2 Honda 270 cc; F1 400 cc</p>
     <p class="r-line">F1 Monster 400 cc</p>
@@ -538,10 +565,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€20</strong><span class="r-sub">length not published</span></div>
+  <div class="r-price"><strong>€20</strong><span class="r-sub">length not published</span></div>
   <div class="r-foot"><span class="dist">≈ 130 km from Barcelona</span><a class="src" href="https://kartingroses.com/1323-2/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="palamos" data-zone="brava" data-lat="41.86956" data-lon="3.13614" data-price="20" data-eurmin="2.00" data-mins="10" data-stars="4.0" data-reviews="386">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-palamos">Karting Palamós</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Palam%C3%B3s%20S.L.%20Palam%C3%B3s" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(386 reviews)</small></a></h3>
     <p class="r-meta">Palamós · Outdoor · Honda 270 cc</p>
     <p class="r-line">Super 270 cc</p>
@@ -549,10 +577,11 @@ a.web{font-weight:600}
     
     <p class="r-flags"><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€20</strong><span class="r-sub">10 min · €2.00/min</span></div>
+  <div class="r-price"><strong>€20</strong><span class="r-sub">10 min · €2.00/min</span></div>
   <div class="r-foot"><span class="dist">≈ 95 km from Barcelona</span><a class="src" href="https://kartingpalamos.com/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="palamos" data-zone="brava" data-lat="41.86956" data-lon="3.13614" data-price="25" data-eurmin="2.50" data-mins="10" data-stars="4.0" data-reviews="386" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-palamos">Karting Palamós</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Palam%C3%B3s%20S.L.%20Palam%C3%B3s" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(386 reviews)</small></a></h3>
     <p class="r-meta">Palamós · Outdoor · Honda 270 cc</p>
     <p class="r-line">Racing 270 cc</p>
@@ -560,10 +589,11 @@ a.web{font-weight:600}
     
     <p class="r-flags"><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€25</strong><span class="r-sub">10 min · €2.50/min</span></div>
+  <div class="r-price"><strong>€25</strong><span class="r-sub">10 min · €2.50/min</span></div>
   <div class="r-foot"><span class="dist">≈ 95 km from Barcelona</span><a class="src" href="https://kartingpalamos.com/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="lloret" data-zone="brava" data-lat="41.71111" data-lon="2.83299" data-price="24" data-eurmin="3.00" data-mins="8" data-stars="3.8" data-reviews="459">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-lloret">Karting Formula Lloret</a> <a class="stars low" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Formula%20Lloret%20Lloret%20de%20Mar" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 3.8 <small>(459 reviews)</small></a></h3>
     <p class="r-meta">Lloret de Mar · Outdoor · 200 / 270 / 390 cc</p>
     <p class="r-line">Normal 200 cc</p>
@@ -571,10 +601,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€24</strong><span class="r-sub">8 min · €3.00/min</span><span class="r-pack">With a pack: €2.58/min</span></div>
+  <div class="r-price"><strong>€24</strong><span class="r-sub">8 min · €3.00/min</span><span class="r-pack">With a pack: €2.58/min</span></div>
   <div class="r-foot"><span class="dist">≈ 65 km from Barcelona</span><a class="src" href="https://www.kartingformulalloret.com/tarifas" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="lloret" data-zone="brava" data-lat="41.71111" data-lon="2.83299" data-price="28" data-eurmin="3.50" data-mins="8" data-stars="3.8" data-reviews="459" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-lloret">Karting Formula Lloret</a> <a class="stars low" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Formula%20Lloret%20Lloret%20de%20Mar" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 3.8 <small>(459 reviews)</small></a></h3>
     <p class="r-meta">Lloret de Mar · Outdoor · 200 / 270 / 390 cc</p>
     <p class="r-line">Super 270 cc</p>
@@ -582,10 +613,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€28</strong><span class="r-sub">8 min · €3.50/min</span><span class="r-pack">With a pack: €2.58/min</span></div>
+  <div class="r-price"><strong>€28</strong><span class="r-sub">8 min · €3.50/min</span><span class="r-pack">With a pack: €2.58/min</span></div>
   <div class="r-foot"><span class="dist">≈ 65 km from Barcelona</span><a class="src" href="https://www.kartingformulalloret.com/tarifas" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="lloret" data-zone="brava" data-lat="41.71111" data-lon="2.83299" data-price="35" data-eurmin="4.38" data-mins="8" data-stars="3.8" data-reviews="459" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-lloret">Karting Formula Lloret</a> <a class="stars low" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Formula%20Lloret%20Lloret%20de%20Mar" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 3.8 <small>(459 reviews)</small></a></h3>
     <p class="r-meta">Lloret de Mar · Outdoor · 200 / 270 / 390 cc</p>
     <p class="r-line">Sport 390 cc</p>
@@ -593,10 +625,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€35</strong><span class="r-sub">8 min · €4.38/min</span><span class="r-pack">With a pack: €2.58/min</span></div>
+  <div class="r-price"><strong>€35</strong><span class="r-sub">8 min · €4.38/min</span><span class="r-pack">With a pack: €2.58/min</span></div>
   <div class="r-foot"><span class="dist">≈ 65 km from Barcelona</span><a class="src" href="https://www.kartingformulalloret.com/tarifas" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="blanes" data-zone="brava" data-lat="41.67254" data-lon="2.76284" data-price="24" data-eurmin="3.00" data-mins="8" data-stars="4.1" data-reviews="900">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-blanes">Karting Club Blanes</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Blanes%20Blanes" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.1 <small>(900 reviews)</small></a></h3>
     <p class="r-meta">Blanes · Outdoor · 200 / 270 / 390 cc</p>
     <p class="r-line">Normal 200 cc</p>
@@ -604,10 +637,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€24</strong><span class="r-sub">8 min · €3.00/min</span></div>
+  <div class="r-price"><strong>€24</strong><span class="r-sub">8 min · €3.00/min</span></div>
   <div class="r-foot"><span class="dist">≈ 60 km from Barcelona</span><a class="src" href="https://www.kartingblanes.com/tickets" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="blanes" data-zone="brava" data-lat="41.67254" data-lon="2.76284" data-price="28" data-eurmin="3.50" data-mins="8" data-stars="4.1" data-reviews="900" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-blanes">Karting Club Blanes</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Blanes%20Blanes" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.1 <small>(900 reviews)</small></a></h3>
     <p class="r-meta">Blanes · Outdoor · 200 / 270 / 390 cc</p>
     <p class="r-line">Super 270 cc</p>
@@ -615,10 +649,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€28</strong><span class="r-sub">8 min · €3.50/min</span></div>
+  <div class="r-price"><strong>€28</strong><span class="r-sub">8 min · €3.50/min</span></div>
   <div class="r-foot"><span class="dist">≈ 60 km from Barcelona</span><a class="src" href="https://www.kartingblanes.com/tickets" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="blanes" data-zone="brava" data-lat="41.67254" data-lon="2.76284" data-price="38" data-eurmin="4.75" data-mins="8" data-stars="4.1" data-reviews="900" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-blanes">Karting Club Blanes</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Blanes%20Blanes" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.1 <small>(900 reviews)</small></a></h3>
     <p class="r-meta">Blanes · Outdoor · 200 / 270 / 390 cc</p>
     <p class="r-line">Racing 390 cc</p>
@@ -626,10 +661,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€38</strong><span class="r-sub">8 min · €4.75/min</span></div>
+  <div class="r-price"><strong>€38</strong><span class="r-sub">8 min · €4.75/min</span></div>
   <div class="r-foot"><span class="dist">≈ 60 km from Barcelona</span><a class="src" href="https://www.kartingblanes.com/tickets" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="elpla" data-zone="lleida" data-lat="42.30341" data-lon="1.36786" data-price="20" data-eurmin="2.00" data-mins="10" data-stars="4.4" data-reviews="868">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-elpla">Karting El Pla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20El%20Pla%20El%20Pla%20de%20Sant%20Tirs" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(868 reviews)</small></a></h3>
     <p class="r-meta">El Pla de Sant Tirs · Outdoor · Super Kart 270 cc / Racing 400 cc</p>
     <p class="r-line">Super Kart 270 cc</p>
@@ -637,10 +673,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€20</strong><span class="r-sub">10 min · €2.00/min</span><span class="r-pack">With a pack: €1.20/min</span></div>
+  <div class="r-price"><strong>€20</strong><span class="r-sub">10 min · €2.00/min</span><span class="r-pack">With a pack: €1.20/min</span></div>
   <div class="r-foot"><span class="dist">≈ 120 km from Barcelona</span><a class="src" href="https://kartingelpla.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="elpla" data-zone="lleida" data-lat="42.30341" data-lon="1.36786" data-price="25" data-eurmin="2.50" data-mins="10" data-stars="4.4" data-reviews="868" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-elpla">Karting El Pla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20El%20Pla%20El%20Pla%20de%20Sant%20Tirs" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(868 reviews)</small></a></h3>
     <p class="r-meta">El Pla de Sant Tirs · Outdoor · Super Kart 270 cc / Racing 400 cc</p>
     <p class="r-line">Racing 400 cc</p>
@@ -648,10 +685,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€25</strong><span class="r-sub">10 min · €2.50/min</span><span class="r-pack">With a pack: €1.20/min</span></div>
+  <div class="r-price"><strong>€25</strong><span class="r-sub">10 min · €2.50/min</span><span class="r-pack">With a pack: €1.20/min</span></div>
   <div class="r-foot"><span class="dist">≈ 120 km from Barcelona</span><a class="src" href="https://kartingelpla.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="zona" data-zone="lleida" data-lat="41.56358" data-lon="0.78755" data-price="20" data-eurmin="2.00" data-mins="10" data-stars="4.2" data-reviews="254">
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-zona">Zona Karting (Juneda)</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Circuit%20de%20Juneda%20Torregrossa" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(254 reviews)</small></a></h3>
     <p class="r-meta">Torregrossa–Juneda (N-240 km 77,9) · Outdoor · CRG Honda 270 cc</p>
     
@@ -659,10 +697,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€20</strong><span class="r-sub">10 min · €2.00/min</span><span class="r-pack">With a pack: €1.50/min</span></div>
+  <div class="r-price"><strong>€20</strong><span class="r-sub">10 min · €2.00/min</span><span class="r-pack">With a pack: €1.50/min</span></div>
   <div class="r-foot"><span class="dist">≈ 115 km from Barcelona</span><a class="src" href="https://www.zonakarting.com/assets_panell/bower_components/kcfinder/upload//Precios_karting.png" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="zona" data-zone="lleida" data-lat="41.56358" data-lon="0.78755" data-price="35" data-eurmin="1.75" data-mins="20" data-stars="4.2" data-reviews="254" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-zona">Zona Karting (Juneda)</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Circuit%20de%20Juneda%20Torregrossa" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(254 reviews)</small></a></h3>
     <p class="r-meta">Torregrossa–Juneda (N-240 km 77,9) · Outdoor · CRG Honda 270 cc</p>
     <p class="r-line">20-minute single booking · not stated whether the minutes are consecutive</p>
@@ -670,10 +709,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€35</strong><span class="r-sub">20 min · €1.75/min</span><span class="r-pack">With a pack: €1.50/min</span></div>
+  <div class="r-price"><strong>€35</strong><span class="r-sub">20 min · €1.75/min</span><span class="r-pack">With a pack: €1.50/min</span></div>
   <div class="r-foot"><span class="dist">≈ 115 km from Barcelona</span><a class="src" href="https://www.zonakarting.com/assets_panell/bower_components/kcfinder/upload//Precios_karting.png" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="session" data-k="zona" data-zone="lleida" data-lat="41.56358" data-lon="0.78755" data-price="45" data-eurmin="1.50" data-mins="30" data-stars="4.2" data-reviews="254" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-zona">Zona Karting (Juneda)</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Circuit%20de%20Juneda%20Torregrossa" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(254 reviews)</small></a></h3>
     <p class="r-meta">Torregrossa–Juneda (N-240 km 77,9) · Outdoor · CRG Honda 270 cc</p>
     <p class="r-line">30-minute single booking · not stated whether the minutes are consecutive</p>
@@ -681,10 +721,11 @@ a.web{font-weight:600}
     
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€45</strong><span class="r-sub">30 min · €1.50/min</span></div>
+  <div class="r-price"><strong>€45</strong><span class="r-sub">30 min · €1.50/min</span></div>
   <div class="r-foot"><span class="dist">≈ 115 km from Barcelona</span><a class="src" href="https://www.zonakarting.com/assets_panell/bower_components/kcfinder/upload//Precios_karting.png" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="penedes" data-zone="central" data-lat="41.346" data-lon="1.698" data-price="28" data-minp="5" data-maxp="" data-track="0" data-eurmin="" data-stars="4.0" data-reviews="800" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-penedes">Scratch Indoor Karting Penedès</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Scratch%20Indoor%20Karting%20Pened%C3%A8s%20Vilafranca%20del%20Pened%C3%A8s" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(800 reviews)</small></a></h3>
     <p class="r-meta">Vilafranca del Penedès · Indoor · Honda 270 cc (9 CV)</p>
     <p class="r-line">Mini Race</p>
@@ -692,10 +733,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 5</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€28</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€28</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 40 km from Barcelona</span><a class="src" href="https://kartingpenedes.com/producto/mini-race-adult-sport-precio-por-persona" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="penedes" data-zone="central" data-lat="41.346" data-lon="1.698" data-price="35" data-minp="7" data-maxp="" data-track="0" data-eurmin="" data-stars="4.0" data-reviews="800" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-penedes">Scratch Indoor Karting Penedès</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Scratch%20Indoor%20Karting%20Pened%C3%A8s%20Vilafranca%20del%20Pened%C3%A8s" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(800 reviews)</small></a></h3>
     <p class="r-meta">Vilafranca del Penedès · Indoor · Honda 270 cc (9 CV)</p>
     <p class="r-line">GP 2</p>
@@ -703,10 +745,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 7</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€35</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€35</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 40 km from Barcelona</span><a class="src" href="https://kartingpenedes.com/producto/gp-2-adult-sport-precio-por-persona" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="penedes" data-zone="central" data-lat="41.346" data-lon="1.698" data-price="50" data-minp="10" data-maxp="" data-track="0" data-eurmin="" data-stars="4.0" data-reviews="800" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-penedes">Scratch Indoor Karting Penedès</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Scratch%20Indoor%20Karting%20Pened%C3%A8s%20Vilafranca%20del%20Pened%C3%A8s" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(800 reviews)</small></a></h3>
     <p class="r-meta">Vilafranca del Penedès · Indoor · Honda 270 cc (9 CV)</p>
     <p class="r-line">GP 3</p>
@@ -714,10 +757,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 10</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€50</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€50</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 40 km from Barcelona</span><a class="src" href="https://kartingpenedes.com/producto/gp-3-adult-sport-precio-por-persona" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="penedes" data-zone="central" data-lat="41.346" data-lon="1.698" data-price="70" data-minp="10" data-maxp="" data-track="0" data-eurmin="" data-stars="4.0" data-reviews="800" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-penedes">Scratch Indoor Karting Penedès</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Scratch%20Indoor%20Karting%20Pened%C3%A8s%20Vilafranca%20del%20Pened%C3%A8s" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(800 reviews)</small></a></h3>
     <p class="r-meta">Vilafranca del Penedès · Indoor · Honda 270 cc (9 CV)</p>
     <p class="r-line">Super Carrera</p>
@@ -725,10 +769,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 10</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€70</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€70</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 40 km from Barcelona</span><a class="src" href="https://kartingpenedes.com/producto/super-carrera-adult-sport-precio-por-persona" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="sallent" data-zone="central" data-lat="41.826" data-lon="1.895" data-price="30" data-minp="4" data-maxp="" data-track="20" data-eurmin="1.50" data-stars="4.4" data-reviews="1028" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-sallent">Karting Sallent</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Sallent%20Sallent" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(1,028 reviews)</small></a></h3>
     <p class="r-meta">Sallent · Outdoor · Sodikart SR4 Honda</p>
     <p class="r-line">Promo GP F3</p>
@@ -736,10 +781,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 4 · Wednesday to Friday, not on public holidays · €35 outside the promotion; the March 2026 PDF says a 10-lap race</p>
     <p class="r-flags"><span class="flag" title="The same site gives two different figures.">conflict</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€30</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€30</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 55 km from Barcelona</span><a class="src" href="https://www.kartingsallent.com/correr-en-kart/gran-premio-f3/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="sallent" data-zone="central" data-lat="41.826" data-lon="1.895" data-price="36" data-minp="4" data-maxp="" data-track="20" data-eurmin="1.80" data-stars="4.4" data-reviews="1028" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-sallent">Karting Sallent</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Sallent%20Sallent" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(1,028 reviews)</small></a></h3>
     <p class="r-meta">Sallent · Outdoor · Sodikart SR4 Honda</p>
     <p class="r-line">GP F2</p>
@@ -747,10 +793,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 4 · the March 2026 price PDF says a 10-lap race</p>
     <p class="r-flags"><span class="flag" title="The same site gives two different figures.">conflict</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€36</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€36</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 55 km from Barcelona</span><a class="src" href="https://www.kartingsallent.com/correr-en-kart/gran-premio-f2-karts-grupos/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="sallent" data-zone="central" data-lat="41.826" data-lon="1.895" data-price="56" data-minp="4" data-maxp="" data-track="30" data-eurmin="1.87" data-stars="4.4" data-reviews="1028" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-sallent">Karting Sallent</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Sallent%20Sallent" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(1,028 reviews)</small></a></h3>
     <p class="r-meta">Sallent · Outdoor · Sodikart SR4 Honda</p>
     <p class="r-line">GP F1</p>
@@ -758,10 +805,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 4 · the same page also says €55; the PDF says a 10-lap race</p>
     <p class="r-flags"><span class="flag" title="The same site gives two different figures.">conflict</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€56</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€56</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 55 km from Barcelona</span><a class="src" href="https://www.kartingsallent.com/correr-en-kart/gran-premio-f1-karts-grupos/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="osona" data-zone="central" data-lat="41.93" data-lon="2.255" data-price="50" data-minp="" data-maxp="" data-track="8" data-eurmin="" data-stars="4.3" data-reviews="551" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-osona">Circuit d&#x27;Osona</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Circuit%20d%27Osona%20Vic" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.3 <small>(551 reviews)</small></a></h3>
     <p class="r-meta">Vic · Outdoor · SODI RX7 Honda GX 390 cc</p>
     <p class="r-line">Mini GP</p>
@@ -769,10 +817,11 @@ a.web{font-weight:600}
     <p class="r-cond">minimum group size not published · podium with trophies: ask</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€50</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€50</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 60 km from Barcelona</span><a class="src" href="https://www.circuitosona.com/lloguer-kart/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="osona" data-zone="central" data-lat="41.93" data-lon="2.255" data-price="60" data-minp="" data-maxp="" data-track="10" data-eurmin="" data-stars="4.3" data-reviews="551" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-osona">Circuit d&#x27;Osona</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Circuit%20d%27Osona%20Vic" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.3 <small>(551 reviews)</small></a></h3>
     <p class="r-meta">Vic · Outdoor · SODI RX7 Honda GX 390 cc</p>
     <p class="r-line">GP 1</p>
@@ -780,10 +829,11 @@ a.web{font-weight:600}
     <p class="r-cond">minimum group size not published · podium with trophies: ask</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 60 km from Barcelona</span><a class="src" href="https://www.circuitosona.com/lloguer-kart/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="osona" data-zone="central" data-lat="41.93" data-lon="2.255" data-price="70" data-minp="6" data-maxp="" data-track="8" data-eurmin="" data-stars="4.3" data-reviews="551" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-osona">Circuit d&#x27;Osona</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Circuit%20d%27Osona%20Vic" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.3 <small>(551 reviews)</small></a></h3>
     <p class="r-meta">Vic · Outdoor · SODI RX7 Honda GX 390 cc</p>
     <p class="r-line">GP 2</p>
@@ -791,10 +841,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6 · podium with trophies: ask</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€70</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€70</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 60 km from Barcelona</span><a class="src" href="https://www.circuitosona.com/lloguer-kart/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="parcmotor" data-zone="central" data-lat="41.598" data-lon="1.7" data-price="47" data-minp="8" data-maxp="" data-track="20" data-eurmin="2.35" data-stars="4.5" data-reviews="2504" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-parcmotor">Karting Parcmotor Castellolí</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Parcmotor%20Castellol%C3%AD%20Castellol%C3%AD" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(2,504 reviews)</small></a></h3>
     <p class="r-meta">Castellolí · Outdoor · site mentions 400 cc and GTR 270 cc</p>
     <p class="r-line">GP Racing F1</p>
@@ -802,10 +853,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · warm-up is included in qualifying</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€47</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€47</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 45 km from Barcelona</span><a class="src" href="https://www.kartingparcmotor.com/alquiler-karts" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="parcmotor" data-zone="central" data-lat="41.598" data-lon="1.7" data-price="54" data-minp="8" data-maxp="" data-track="24" data-eurmin="2.25" data-stars="4.5" data-reviews="2504" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-parcmotor">Karting Parcmotor Castellolí</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Parcmotor%20Castellol%C3%AD%20Castellol%C3%AD" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(2,504 reviews)</small></a></h3>
     <p class="r-meta">Castellolí · Outdoor · site mentions 400 cc and GTR 270 cc</p>
     <p class="r-line">GP Especial F1</p>
@@ -813,10 +865,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · warm-up is included in qualifying</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€54</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€54</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 45 km from Barcelona</span><a class="src" href="https://www.kartingparcmotor.com/alquiler-karts" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="parcmotor" data-zone="central" data-lat="41.598" data-lon="1.7" data-price="63" data-minp="8" data-maxp="" data-track="30" data-eurmin="2.10" data-stars="4.5" data-reviews="2504" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-parcmotor">Karting Parcmotor Castellolí</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Parcmotor%20Castellol%C3%AD%20Castellol%C3%AD" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(2,504 reviews)</small></a></h3>
     <p class="r-meta">Castellolí · Outdoor · site mentions 400 cc and GTR 270 cc</p>
     <p class="r-line">Super GP F1 Premium</p>
@@ -824,10 +877,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · under 10 people: 10 + 10 + 10 min</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€63</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€63</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 45 km from Barcelona</span><a class="src" href="https://www.kartingparcmotor.com/alquiler-karts" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="parcmotor" data-zone="central" data-lat="41.598" data-lon="1.7" data-price="85" data-minp="10" data-maxp="" data-track="40" data-eurmin="2.13" data-stars="4.5" data-reviews="2504" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-parcmotor">Karting Parcmotor Castellolí</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Parcmotor%20Castellol%C3%AD%20Castellol%C3%AD" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(2,504 reviews)</small></a></h3>
     <p class="r-meta">Castellolí · Outdoor · site mentions 400 cc and GTR 270 cc</p>
     <p class="r-line">Super GP XXL</p>
@@ -835,10 +889,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 10 · €89 at special times</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€85</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€85</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 45 km from Barcelona</span><a class="src" href="https://www.kartingparcmotor.com/alquiler-karts" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="cardedeu" data-zone="bcn" data-lat="41.639" data-lon="2.358" data-price="45" data-minp="8" data-maxp="18" data-track="20" data-eurmin="2.25" data-stars="4.2" data-reviews="2360" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-cardedeu">Karting Cardedeu</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Cardedeu%20Cardedeu" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(2,360 reviews)</small></a></h3>
     <p class="r-meta">Cardedeu · Outdoor · GT/SR Honda 270 cc (11 CV)</p>
     <p class="r-line">Mini GP</p>
@@ -846,10 +901,11 @@ a.web{font-weight:600}
     <p class="r-cond">8–18 people</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 30 km from Barcelona</span><a class="src" href="https://www.kartingcardedeu.com/producto/mini-gran-premio-adulto/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="cardedeu" data-zone="bcn" data-lat="41.639" data-lon="2.358" data-price="55" data-minp="8" data-maxp="18" data-track="30" data-eurmin="1.83" data-stars="4.2" data-reviews="2360" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-cardedeu">Karting Cardedeu</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Cardedeu%20Cardedeu" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(2,360 reviews)</small></a></h3>
     <p class="r-meta">Cardedeu · Outdoor · GT/SR Honda 270 cc (11 CV)</p>
     <p class="r-line">Gran Premio</p>
@@ -857,10 +913,11 @@ a.web{font-weight:600}
     <p class="r-cond">8–18 people</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 30 km from Barcelona</span><a class="src" href="https://www.kartingcardedeu.com/producto/gran-premio-adulto/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="cardedeu" data-zone="bcn" data-lat="41.639" data-lon="2.358" data-price="65" data-minp="8" data-maxp="18" data-track="40" data-eurmin="1.63" data-stars="4.2" data-reviews="2360" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-cardedeu">Karting Cardedeu</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Cardedeu%20Cardedeu" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(2,360 reviews)</small></a></h3>
     <p class="r-meta">Cardedeu · Outdoor · GT/SR Honda 270 cc (11 CV)</p>
     <p class="r-line">Super Gran Premio</p>
@@ -868,10 +925,11 @@ a.web{font-weight:600}
     <p class="r-cond">8–18 people</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€65</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€65</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 30 km from Barcelona</span><a class="src" href="https://www.kartingcardedeu.com/producto/super-gran-premio-adulto/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="nurburgreen" data-zone="bcn" data-lat="41.63" data-lon="2.296" data-price="42" data-minp="6" data-maxp="" data-track="8" data-eurmin="" data-stars="4.7" data-reviews="1112" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-nurburgreen">Nürburgreen Indoor</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=N%C3%BCrburgreen%20Indoor%20-%20Karting%20Electric%20Les%20Franqueses%20del%20Vall%C3%A8s" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.7 <small>(1,112 reviews)</small></a></h3>
     <p class="r-meta">Les Franqueses del Vallès · Indoor (electric) · electric brushless, BRB chassis</p>
     <p class="r-line">E-Race</p>
@@ -879,10 +937,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€42</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€42</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 30 km from Barcelona</span><a class="src" href="https://nurburgreen.net/wp-content/uploads/2026/10/TARIFAS-NUR-2026-scaled.png" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="nurburgreen" data-zone="bcn" data-lat="41.63" data-lon="2.296" data-price="55" data-minp="6" data-maxp="" data-track="16" data-eurmin="" data-stars="4.7" data-reviews="1112" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-nurburgreen">Nürburgreen Indoor</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=N%C3%BCrburgreen%20Indoor%20-%20Karting%20Electric%20Les%20Franqueses%20del%20Vall%C3%A8s" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.7 <small>(1,112 reviews)</small></a></h3>
     <p class="r-meta">Les Franqueses del Vallès · Indoor (electric) · electric brushless, BRB chassis</p>
     <p class="r-line">E-GP</p>
@@ -890,10 +949,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 30 km from Barcelona</span><a class="src" href="https://nurburgreen.net/wp-content/uploads/2026/10/TARIFAS-NUR-2026-scaled.png" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="ikb" data-zone="bcn" data-lat="41.381" data-lon="2.045" data-price="37" data-minp="8" data-maxp="" data-track="12" data-eurmin="3.08" data-stars="4.2" data-reviews="7292" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-ikb">Indoor Karting Barcelona</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Indoor%20Karting%20Barcelona%20Sant%20Feliu%20de%20Llobregat" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(7,292 reviews)</small></a></h3>
     <p class="r-meta">Sant Feliu de Llobregat · Indoor · petrol Sodikart</p>
     <p class="r-line">Mini Sprint Race</p>
@@ -901,10 +961,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · minimum 8 Mon–Thu, 10 Fri–Sun</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€37</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€37</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 10 km from Barcelona</span><a class="src" href="https://indoorkartingbarcelona.com/eventos-adultos/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="ikb" data-zone="bcn" data-lat="41.381" data-lon="2.045" data-price="45" data-minp="8" data-maxp="" data-track="16" data-eurmin="2.81" data-stars="4.2" data-reviews="7292" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-ikb">Indoor Karting Barcelona</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Indoor%20Karting%20Barcelona%20Sant%20Feliu%20de%20Llobregat" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(7,292 reviews)</small></a></h3>
     <p class="r-meta">Sant Feliu de Llobregat · Indoor · petrol Sodikart</p>
     <p class="r-line">Sprint Race</p>
@@ -912,10 +973,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · minimum 8 Mon–Thu, 10 Fri–Sun</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 10 km from Barcelona</span><a class="src" href="https://indoorkartingbarcelona.com/eventos-adultos/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="ikb" data-zone="bcn" data-lat="41.381" data-lon="2.045" data-price="60" data-minp="8" data-maxp="" data-track="24" data-eurmin="2.50" data-stars="4.2" data-reviews="7292" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-ikb">Indoor Karting Barcelona</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Indoor%20Karting%20Barcelona%20Sant%20Feliu%20de%20Llobregat" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(7,292 reviews)</small></a></h3>
     <p class="r-meta">Sant Feliu de Llobregat · Indoor · petrol Sodikart</p>
     <p class="r-line">Gran Premio</p>
@@ -923,10 +985,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · minimum 8 Mon–Thu, 10 Fri–Sun</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 10 km from Barcelona</span><a class="src" href="https://indoorkartingbarcelona.com/eventos-adultos/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="gene" data-zone="bcn" data-lat="41.31024" data-lon="2.02659" data-price="38" data-minp="10" data-maxp="" data-track="8" data-eurmin="" data-stars="4.2" data-reviews="1297" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-gene">Gené Karting</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Gen%C3%A9%20Karting%20Viladecans" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(1,297 reviews)</small></a></h3>
     <p class="r-meta">Viladecans · Indoor</p>
     <p class="r-line">Mini Race</p>
@@ -934,10 +997,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 10 · €42 at weekends and on holidays</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€38</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€38</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 15 km from Barcelona</span><a class="src" href="https://barcelonagenekarting.com/el-karting/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="gene" data-zone="bcn" data-lat="41.31024" data-lon="2.02659" data-price="55" data-minp="10" data-maxp="" data-track="16" data-eurmin="" data-stars="4.2" data-reviews="1297" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-gene">Gené Karting</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Gen%C3%A9%20Karting%20Viladecans" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(1,297 reviews)</small></a></h3>
     <p class="r-meta">Viladecans · Indoor</p>
     <p class="r-line">Gran Premio</p>
@@ -945,10 +1009,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 10 · €60 at weekends and on holidays</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 15 km from Barcelona</span><a class="src" href="https://barcelonagenekarting.com/el-karting/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="minilandia" data-zone="bcn" data-lat="41.27566" data-lon="2.04766" data-price="34" data-minp="6" data-maxp="" data-track="0" data-eurmin="" data-stars="4.0" data-reviews="1992" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-minilandia">Karting Minilandia</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Minilandia%2C%20Parc%20Recreatiu.%20Viladecans" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(1,992 reviews)</small></a></h3>
     <p class="r-meta">Viladecans · Outdoor · Honda 270 cc 4T</p>
     <p class="r-line">GP Adultos</p>
@@ -956,10 +1021,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€34</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€34</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 16 km from Barcelona</span><a class="src" href="https://www.kartingminilandia.com/tarifas-y-promociones/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="altafulla" data-zone="south" data-lat="41.14061" data-lon="1.38345" data-price="30" data-minp="6" data-maxp="" data-track="5" data-eurmin="" data-stars="4.2" data-reviews="384" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-altafulla">Karting Altafulla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Altafulla%20Altafulla" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(384 reviews)</small></a></h3>
     <p class="r-meta">Altafulla · Outdoor · “Fórmula” petrol kart</p>
     <p class="r-line">Fast Race GP</p>
@@ -967,10 +1033,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6</p>
     <p class="r-flags"><span class="flag ok" title="The site says prices include VAT.">VAT incl.</span><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€30</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€30</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 70 km from Barcelona</span><a class="src" href="https://www.kartingaltafulla.com/es/preus/curses-de-grups/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="altafulla" data-zone="south" data-lat="41.14061" data-lon="1.38345" data-price="35" data-minp="6" data-maxp="" data-track="6" data-eurmin="" data-stars="4.2" data-reviews="384" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-altafulla">Karting Altafulla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Altafulla%20Altafulla" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(384 reviews)</small></a></h3>
     <p class="r-meta">Altafulla · Outdoor · “Fórmula” petrol kart</p>
     <p class="r-line">GP6</p>
@@ -978,10 +1045,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6</p>
     <p class="r-flags"><span class="flag ok" title="The site says prices include VAT.">VAT incl.</span><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€35</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€35</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 70 km from Barcelona</span><a class="src" href="https://www.kartingaltafulla.com/es/preus/curses-de-grups/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="altafulla" data-zone="south" data-lat="41.14061" data-lon="1.38345" data-price="40" data-minp="6" data-maxp="" data-track="6" data-eurmin="" data-stars="4.2" data-reviews="384" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-altafulla">Karting Altafulla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Altafulla%20Altafulla" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(384 reviews)</small></a></h3>
     <p class="r-meta">Altafulla · Outdoor · “Fórmula” petrol kart</p>
     <p class="r-line">GP5</p>
@@ -989,10 +1057,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6</p>
     <p class="r-flags"><span class="flag ok" title="The site says prices include VAT.">VAT incl.</span><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€40</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€40</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 70 km from Barcelona</span><a class="src" href="https://www.kartingaltafulla.com/es/preus/curses-de-grups/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="altafulla" data-zone="south" data-lat="41.14061" data-lon="1.38345" data-price="45" data-minp="6" data-maxp="" data-track="9" data-eurmin="" data-stars="4.2" data-reviews="384" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-altafulla">Karting Altafulla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Altafulla%20Altafulla" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(384 reviews)</small></a></h3>
     <p class="r-meta">Altafulla · Outdoor · “Fórmula” petrol kart</p>
     <p class="r-line">GP4</p>
@@ -1000,10 +1069,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6</p>
     <p class="r-flags"><span class="flag ok" title="The site says prices include VAT.">VAT incl.</span><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 70 km from Barcelona</span><a class="src" href="https://www.kartingaltafulla.com/es/preus/curses-de-grups/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="altafulla" data-zone="south" data-lat="41.14061" data-lon="1.38345" data-price="50" data-minp="6" data-maxp="" data-track="14" data-eurmin="" data-stars="4.2" data-reviews="384" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-altafulla">Karting Altafulla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Altafulla%20Altafulla" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(384 reviews)</small></a></h3>
     <p class="r-meta">Altafulla · Outdoor · “Fórmula” petrol kart</p>
     <p class="r-line">GP3</p>
@@ -1011,10 +1081,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6</p>
     <p class="r-flags"><span class="flag ok" title="The site says prices include VAT.">VAT incl.</span><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€50</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€50</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 70 km from Barcelona</span><a class="src" href="https://www.kartingaltafulla.com/es/preus/curses-de-grups/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="altafulla" data-zone="south" data-lat="41.14061" data-lon="1.38345" data-price="55" data-minp="6" data-maxp="" data-track="16" data-eurmin="" data-stars="4.2" data-reviews="384" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-altafulla">Karting Altafulla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Altafulla%20Altafulla" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(384 reviews)</small></a></h3>
     <p class="r-meta">Altafulla · Outdoor · “Fórmula” petrol kart</p>
     <p class="r-line">GP2</p>
@@ -1022,10 +1093,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6</p>
     <p class="r-flags"><span class="flag ok" title="The site says prices include VAT.">VAT incl.</span><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 70 km from Barcelona</span><a class="src" href="https://www.kartingaltafulla.com/es/preus/curses-de-grups/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="altafulla" data-zone="south" data-lat="41.14061" data-lon="1.38345" data-price="60" data-minp="6" data-maxp="" data-track="18" data-eurmin="" data-stars="4.2" data-reviews="384" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-altafulla">Karting Altafulla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Altafulla%20Altafulla" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(384 reviews)</small></a></h3>
     <p class="r-meta">Altafulla · Outdoor · “Fórmula” petrol kart</p>
     <p class="r-line">GP1</p>
@@ -1033,10 +1105,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6</p>
     <p class="r-flags"><span class="flag ok" title="The site says prices include VAT.">VAT incl.</span><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 70 km from Barcelona</span><a class="src" href="https://www.kartingaltafulla.com/es/preus/curses-de-grups/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="tarraco" data-zone="south" data-lat="41.11394" data-lon="1.23231" data-price="32" data-minp="5" data-maxp="" data-track="13" data-eurmin="2.46" data-stars="4.5" data-reviews="1028" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-tarraco">Tarraco Karting</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Tarraco%20Karting%20Tarragona" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(1,028 reviews)</small></a></h3>
     <p class="r-meta">Tarragona · Indoor + outdoor · Senior 270 cc (11 CV)</p>
     <p class="r-line">Fast GP</p>
@@ -1044,10 +1117,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 5 · home page says minimum 2 drivers; track not exclusive</p>
     <p class="r-flags"><span class="flag" title="The same site gives two different figures.">conflict</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€32</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€32</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 85 km from Barcelona</span><a class="src" href="https://tarracokarting.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="tarraco" data-zone="south" data-lat="41.11394" data-lon="1.23231" data-price="46" data-minp="5" data-maxp="" data-track="20" data-eurmin="2.30" data-stars="4.5" data-reviews="1028" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-tarraco">Tarraco Karting</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Tarraco%20Karting%20Tarragona" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(1,028 reviews)</small></a></h3>
     <p class="r-meta">Tarragona · Indoor + outdoor · Senior 270 cc (11 CV)</p>
     <p class="r-line">Mini GP</p>
@@ -1055,10 +1129,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 5</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€46</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€46</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 85 km from Barcelona</span><a class="src" href="https://tarracokarting.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="tarraco" data-zone="south" data-lat="41.11394" data-lon="1.23231" data-price="62" data-minp="5" data-maxp="" data-track="30" data-eurmin="2.07" data-stars="4.5" data-reviews="1028" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-tarraco">Tarraco Karting</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Tarraco%20Karting%20Tarragona" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(1,028 reviews)</small></a></h3>
     <p class="r-meta">Tarragona · Indoor + outdoor · Senior 270 cc (11 CV)</p>
     <p class="r-line">Classic GP</p>
@@ -1066,10 +1141,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 5</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€62</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€62</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 85 km from Barcelona</span><a class="src" href="https://tarracokarting.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="tarraco" data-zone="south" data-lat="41.11394" data-lon="1.23231" data-price="76" data-minp="5" data-maxp="" data-track="40" data-eurmin="1.90" data-stars="4.5" data-reviews="1028" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-tarraco">Tarraco Karting</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Tarraco%20Karting%20Tarragona" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(1,028 reviews)</small></a></h3>
     <p class="r-meta">Tarragona · Indoor + outdoor · Senior 270 cc (11 CV)</p>
     <p class="r-line">Super GP</p>
@@ -1077,10 +1153,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 5</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€76</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€76</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 85 km from Barcelona</span><a class="src" href="https://tarracokarting.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="salou" data-zone="south" data-lat="41.09211" data-lon="1.1297" data-price="40" data-minp="" data-maxp="" data-track="18" data-eurmin="2.22" data-stars="4.5" data-reviews="3782" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-salou">Karting Salou</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Salou%20Salou" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(3,782 reviews)</small></a></h3>
     <p class="r-meta">Salou · Outdoor</p>
     <p class="r-line">Sprint Race</p>
@@ -1088,10 +1165,11 @@ a.web{font-weight:600}
     <p class="r-cond">minimum group size not published · €45 in high season</p>
     <p class="r-flags"><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€40</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€40</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 95 km from Barcelona</span><a class="src" href="https://kartingsalou.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="salou" data-zone="south" data-lat="41.09211" data-lon="1.1297" data-price="55" data-minp="" data-maxp="" data-track="26" data-eurmin="2.12" data-stars="4.5" data-reviews="3782" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-salou">Karting Salou</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Salou%20Salou" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(3,782 reviews)</small></a></h3>
     <p class="r-meta">Salou · Outdoor</p>
     <p class="r-line">Grand Race</p>
@@ -1099,10 +1177,11 @@ a.web{font-weight:600}
     <p class="r-cond">minimum group size not published · €60 in high season</p>
     <p class="r-flags"><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 95 km from Barcelona</span><a class="src" href="https://kartingsalou.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="calafat" data-zone="south" data-lat="40.92647" data-lon="0.83753" data-price="45" data-minp="" data-maxp="" data-track="16" data-eurmin="" data-stars="4.0" data-reviews="300" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-calafat">Karting Calafat</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Calafat%20L%27Ametlla%20de%20Mar" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(300 reviews)</small></a></h3>
     <p class="r-meta">L&#x27;Ametlla de Mar · Outdoor · Sodi GT5 270 cc</p>
     <p class="r-line">Grand Prix Sodi</p>
@@ -1110,10 +1189,11 @@ a.web{font-weight:600}
     <p class="r-cond">minimum group size not published · €49 and an 8-lap race in high season</p>
     <p class="r-flags"><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 125 km from Barcelona</span><a class="src" href="https://karting.circuitcalafat.com/rates" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="calafat" data-zone="south" data-lat="40.92647" data-lon="0.83753" data-price="54" data-minp="" data-maxp="" data-track="8" data-eurmin="" data-stars="4.0" data-reviews="300" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-calafat">Karting Calafat</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Calafat%20L%27Ametlla%20de%20Mar" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(300 reviews)</small></a></h3>
     <p class="r-meta">L&#x27;Ametlla de Mar · Outdoor · Sodi GT5 270 cc</p>
     <p class="r-line">GP Racing</p>
@@ -1121,10 +1201,11 @@ a.web{font-weight:600}
     <p class="r-cond">minimum group size not published · €58 in high season</p>
     <p class="r-flags"><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€54</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€54</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 125 km from Barcelona</span><a class="src" href="https://karting.circuitcalafat.com/rates" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="calafat" data-zone="south" data-lat="40.92647" data-lon="0.83753" data-price="68" data-minp="" data-maxp="" data-track="16" data-eurmin="" data-stars="4.0" data-reviews="300" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-calafat">Karting Calafat</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Calafat%20L%27Ametlla%20de%20Mar" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.0 <small>(300 reviews)</small></a></h3>
     <p class="r-meta">L&#x27;Ametlla de Mar · Outdoor · Sodi GT5 270 cc</p>
     <p class="r-line">Super GP Racing</p>
@@ -1132,10 +1213,11 @@ a.web{font-weight:600}
     <p class="r-cond">minimum group size not published</p>
     <p class="r-flags"><span class="flag" title="Opening or prices change with the season.">seasonal</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€68</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€68</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 125 km from Barcelona</span><a class="src" href="https://karting.circuitcalafat.com/rates" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="vendrell" data-zone="south" data-lat="41.19822" data-lon="1.52869" data-price="35" data-minp="8" data-maxp="" data-track="5" data-eurmin="" data-stars="4.3" data-reviews="2894" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-vendrell">Karting Vendrell</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Vendrell%20El%20Vendrell" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.3 <small>(2,894 reviews)</small></a></h3>
     <p class="r-meta">El Vendrell · Outdoor</p>
     <p class="r-line">Mini GP</p>
@@ -1143,10 +1225,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · Monday to Friday · the general GP page says only the Super GP includes timing</p>
     <p class="r-flags"><span class="flag" title="The same site gives two different figures.">conflict</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€35</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€35</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 55 km from Barcelona</span><a class="src" href="https://kartingvendrell.com/tienda/mini-gran-premio/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="vendrell" data-zone="south" data-lat="41.19822" data-lon="1.52869" data-price="50" data-minp="8" data-maxp="" data-track="10" data-eurmin="" data-stars="4.3" data-reviews="2894" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-vendrell">Karting Vendrell</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Vendrell%20El%20Vendrell" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.3 <small>(2,894 reviews)</small></a></h3>
     <p class="r-meta">El Vendrell · Outdoor</p>
     <p class="r-line">Gran Premio</p>
@@ -1154,10 +1237,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · the general GP page says only the Super GP includes timing</p>
     <p class="r-flags"><span class="flag" title="The same site gives two different figures.">conflict</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€50</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€50</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 55 km from Barcelona</span><a class="src" href="https://kartingvendrell.com/tienda/gran-premio/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="vendrell" data-zone="south" data-lat="41.19822" data-lon="1.52869" data-price="65" data-minp="8" data-maxp="" data-track="20" data-eurmin="" data-stars="4.3" data-reviews="2894" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-vendrell">Karting Vendrell</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Vendrell%20El%20Vendrell" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.3 <small>(2,894 reviews)</small></a></h3>
     <p class="r-meta">El Vendrell · Outdoor</p>
     <p class="r-line">Super Gran Premio</p>
@@ -1165,10 +1249,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · the general GP page says 7 practice + 7 timed + 7 race laps</p>
     <p class="r-flags"><span class="flag" title="The same site gives two different figures.">conflict</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€65</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€65</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 55 km from Barcelona</span><a class="src" href="https://kartingvendrell.com/tienda/super-gran-premio/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="vendrell" data-zone="south" data-lat="41.19822" data-lon="1.52869" data-price="85" data-minp="8" data-maxp="" data-track="10" data-eurmin="" data-stars="4.3" data-reviews="2894" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-vendrell">Karting Vendrell</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Vendrell%20El%20Vendrell" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.3 <small>(2,894 reviews)</small></a></h3>
     <p class="r-meta">El Vendrell · Outdoor</p>
     <p class="r-line">GP GTMax 125</p>
@@ -1176,10 +1261,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€85</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€85</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 55 km from Barcelona</span><a class="src" href="https://kartingvendrell.com/tienda/gran-premio-gtmax-125/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="vendrell" data-zone="south" data-lat="41.19822" data-lon="1.52869" data-price="110" data-minp="8" data-maxp="" data-track="20" data-eurmin="" data-stars="4.3" data-reviews="2894" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-vendrell">Karting Vendrell</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Vendrell%20El%20Vendrell" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.3 <small>(2,894 reviews)</small></a></h3>
     <p class="r-meta">El Vendrell · Outdoor</p>
     <p class="r-line">Super GP GTMax 125</p>
@@ -1187,10 +1273,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€110</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€110</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 55 km from Barcelona</span><a class="src" href="https://kartingvendrell.com/tienda/super-gran-premio-gt-max-125/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="empuriabrava" data-zone="brava" data-lat="42.26012" data-lon="3.11207" data-price="45" data-minp="8" data-maxp="" data-track="20" data-eurmin="2.25" data-stars="4.5" data-reviews="1020" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-empuriabrava">Karting Empuriabrava</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Empuriabrava%20Empuriabrava" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(1,020 reviews)</small></a></h3>
     <p class="r-meta">Empuriabrava (Castelló d&#x27;Empúries) · Outdoor · SR4 Honda 270 cc (11 CV)</p>
     <p class="r-line">Mini GP</p>
@@ -1198,10 +1285,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · free race for the guest of honour from 10 people</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 125 km from Barcelona</span><a class="src" href="https://kartingempuriabrava.com/producto/mini-gran-premio-adulto/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="empuriabrava" data-zone="brava" data-lat="42.26012" data-lon="3.11207" data-price="55" data-minp="8" data-maxp="" data-track="30" data-eurmin="1.83" data-stars="4.5" data-reviews="1020" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-empuriabrava">Karting Empuriabrava</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Empuriabrava%20Empuriabrava" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(1,020 reviews)</small></a></h3>
     <p class="r-meta">Empuriabrava (Castelló d&#x27;Empúries) · Outdoor · SR4 Honda 270 cc (11 CV)</p>
     <p class="r-line">Gran Premio</p>
@@ -1209,10 +1297,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · free race for the guest of honour from 10 people</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 125 km from Barcelona</span><a class="src" href="https://kartingempuriabrava.com/producto/gran-premio-adulto/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="empuriabrava" data-zone="brava" data-lat="42.26012" data-lon="3.11207" data-price="65" data-minp="8" data-maxp="" data-track="40" data-eurmin="1.63" data-stars="4.5" data-reviews="1020" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-empuriabrava">Karting Empuriabrava</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Empuriabrava%20Empuriabrava" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.5 <small>(1,020 reviews)</small></a></h3>
     <p class="r-meta">Empuriabrava (Castelló d&#x27;Empúries) · Outdoor · SR4 Honda 270 cc (11 CV)</p>
     <p class="r-line">Super Gran Premio</p>
@@ -1220,10 +1309,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · free race for the guest of honour from 10 people</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€65</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€65</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 125 km from Barcelona</span><a class="src" href="https://kartingempuriabrava.com/producto/super-gran-premio-adulto/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="cross" data-zone="brava" data-lat="42.25" data-lon="3.07" data-price="40" data-minp="7" data-maxp="30" data-track="5" data-eurmin="" data-stars="4.4" data-reviews="796" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-cross">Karting Cross Empuriabrava</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Cross%20Costa%20Brava%20Empuriabrava" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(796 reviews)</small></a></h3>
     <p class="r-meta">Empuriabrava (C-260 km 39) · Outdoor · Superkart</p>
     <p class="r-line">Grandprix</p>
@@ -1231,10 +1321,11 @@ a.web{font-weight:600}
     <p class="r-cond">7–30 people · about 40 min in total for the activity</p>
     <p class="r-flags"><span class="flag ok" title="The site says prices include VAT.">VAT incl.</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€40</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€40</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 120 km from Barcelona</span><a class="src" href="https://www.kartingcrossempuriabrava.com/gp-karting" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="cross" data-zone="brava" data-lat="42.25" data-lon="3.07" data-price="55" data-minp="7" data-maxp="30" data-track="15" data-eurmin="" data-stars="4.4" data-reviews="796" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-cross">Karting Cross Empuriabrava</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Cross%20Costa%20Brava%20Empuriabrava" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(796 reviews)</small></a></h3>
     <p class="r-meta">Empuriabrava (C-260 km 39) · Outdoor · Superkart</p>
     <p class="r-line">Superprix</p>
@@ -1242,10 +1333,11 @@ a.web{font-weight:600}
     <p class="r-cond">7–30 people · about 70 min in total for the activity</p>
     <p class="r-flags"><span class="flag ok" title="The site says prices include VAT.">VAT incl.</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 120 km from Barcelona</span><a class="src" href="https://www.kartingcrossempuriabrava.com/gp-karting" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="roses" data-zone="brava" data-lat="42.27777" data-lon="3.1589" data-price="40" data-minp="" data-maxp="" data-track="" data-eurmin="" data-stars="4.2" data-reviews="2052" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-roses">Karting Roses</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Roses%20Roses" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(2,052 reviews)</small></a></h3>
     <p class="r-meta">Roses · Outdoor · F2 Honda 270 cc; F1 400 cc</p>
     <p class="r-line">F2 race</p>
@@ -1253,10 +1345,11 @@ a.web{font-weight:600}
     <p class="r-cond">minimum group size not published · the site does not say if it is per person</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€40</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€40</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 130 km from Barcelona</span><a class="src" href="https://kartingroses.com/1323-2/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="roses" data-zone="brava" data-lat="42.27777" data-lon="3.1589" data-price="60" data-minp="" data-maxp="" data-track="" data-eurmin="" data-stars="4.2" data-reviews="2052" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-roses">Karting Roses</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Roses%20Roses" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(2,052 reviews)</small></a></h3>
     <p class="r-meta">Roses · Outdoor · F2 Honda 270 cc; F1 400 cc</p>
     <p class="r-line">F1 race</p>
@@ -1264,10 +1357,11 @@ a.web{font-weight:600}
     <p class="r-cond">minimum group size not published · the site does not say if it is per person</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 130 km from Barcelona</span><a class="src" href="https://kartingroses.com/1323-2/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="lloret" data-zone="brava" data-lat="41.71111" data-lon="2.83299" data-price="60" data-minp="8" data-maxp="" data-track="5" data-eurmin="" data-stars="3.8" data-reviews="459" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-lloret">Karting Formula Lloret</a> <a class="stars low" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Formula%20Lloret%20Lloret%20de%20Mar" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 3.8 <small>(459 reviews)</small></a></h3>
     <p class="r-meta">Lloret de Mar · Outdoor · 200 / 270 / 390 cc</p>
     <p class="r-line">Grand Prix</p>
@@ -1275,10 +1369,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · about 25–30 min in total</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 65 km from Barcelona</span><a class="src" href="https://www.kartingformulalloret.com/carreras" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="blanes" data-zone="brava" data-lat="41.67254" data-lon="2.76284" data-price="60" data-minp="8" data-maxp="" data-track="13" data-eurmin="" data-stars="4.1" data-reviews="900" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-blanes">Karting Club Blanes</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20Blanes%20Blanes" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.1 <small>(900 reviews)</small></a></h3>
     <p class="r-meta">Blanes · Outdoor · 200 / 270 / 390 cc</p>
     <p class="r-line">Grand Prix</p>
@@ -1286,10 +1381,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 8 · about 25–30 min in total</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 60 km from Barcelona</span><a class="src" href="https://www.kartingblanes.com/carrera" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="elpla" data-zone="lleida" data-lat="42.30341" data-lon="1.36786" data-price="45" data-minp="10" data-maxp="" data-track="10" data-eurmin="" data-stars="4.4" data-reviews="868" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-elpla">Karting El Pla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20El%20Pla%20El%20Pla%20de%20Sant%20Tirs" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(868 reviews)</small></a></h3>
     <p class="r-meta">El Pla de Sant Tirs · Outdoor · Super Kart 270 cc / Racing 400 cc</p>
     <p class="r-line">Mini GP Super Kart</p>
@@ -1297,10 +1393,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 10 · night circuit: more laps (18)</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 120 km from Barcelona</span><a class="src" href="https://kartingelpla.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="elpla" data-zone="lleida" data-lat="42.30341" data-lon="1.36786" data-price="55" data-minp="10" data-maxp="" data-track="10" data-eurmin="" data-stars="4.4" data-reviews="868" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-elpla">Karting El Pla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20El%20Pla%20El%20Pla%20de%20Sant%20Tirs" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(868 reviews)</small></a></h3>
     <p class="r-meta">El Pla de Sant Tirs · Outdoor · Super Kart 270 cc / Racing 400 cc</p>
     <p class="r-line">GP Super Kart</p>
@@ -1308,10 +1405,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 10 · night circuit: more laps (15 + 15)</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 120 km from Barcelona</span><a class="src" href="https://kartingelpla.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="elpla" data-zone="lleida" data-lat="42.30341" data-lon="1.36786" data-price="70" data-minp="10" data-maxp="" data-track="20" data-eurmin="" data-stars="4.4" data-reviews="868" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-elpla">Karting El Pla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20El%20Pla%20El%20Pla%20de%20Sant%20Tirs" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(868 reviews)</small></a></h3>
     <p class="r-meta">El Pla de Sant Tirs · Outdoor · Super Kart 270 cc / Racing 400 cc</p>
     <p class="r-line">Super GP Super Kart</p>
@@ -1319,10 +1417,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 10 · night circuit: more laps (25 + 25)</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€70</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€70</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 120 km from Barcelona</span><a class="src" href="https://kartingelpla.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="elpla" data-zone="lleida" data-lat="42.30341" data-lon="1.36786" data-price="60" data-minp="10" data-maxp="" data-track="10" data-eurmin="" data-stars="4.4" data-reviews="868" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-elpla">Karting El Pla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20El%20Pla%20El%20Pla%20de%20Sant%20Tirs" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(868 reviews)</small></a></h3>
     <p class="r-meta">El Pla de Sant Tirs · Outdoor · Super Kart 270 cc / Racing 400 cc</p>
     <p class="r-line">Mini GP Racing 400</p>
@@ -1330,10 +1429,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 10 · night circuit: more laps (18)</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€60</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 120 km from Barcelona</span><a class="src" href="https://kartingelpla.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="elpla" data-zone="lleida" data-lat="42.30341" data-lon="1.36786" data-price="75" data-minp="10" data-maxp="" data-track="10" data-eurmin="" data-stars="4.4" data-reviews="868" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-elpla">Karting El Pla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20El%20Pla%20El%20Pla%20de%20Sant%20Tirs" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(868 reviews)</small></a></h3>
     <p class="r-meta">El Pla de Sant Tirs · Outdoor · Super Kart 270 cc / Racing 400 cc</p>
     <p class="r-line">GP Racing 400</p>
@@ -1341,10 +1441,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 10 · night circuit: more laps (15 + 15)</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€75</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€75</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 120 km from Barcelona</span><a class="src" href="https://kartingelpla.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="elpla" data-zone="lleida" data-lat="42.30341" data-lon="1.36786" data-price="95" data-minp="10" data-maxp="" data-track="20" data-eurmin="" data-stars="4.4" data-reviews="868" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-elpla">Karting El Pla</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Karting%20El%20Pla%20El%20Pla%20de%20Sant%20Tirs" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.4 <small>(868 reviews)</small></a></h3>
     <p class="r-meta">El Pla de Sant Tirs · Outdoor · Super Kart 270 cc / Racing 400 cc</p>
     <p class="r-line">Super GP Racing 400</p>
@@ -1352,10 +1453,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 10 · night circuit: more laps (25 + 25)</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€95</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€95</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 120 km from Barcelona</span><a class="src" href="https://kartingelpla.com/tarifas/" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="zona" data-zone="lleida" data-lat="41.56358" data-lon="0.78755" data-price="35" data-minp="6" data-maxp="10" data-track="0" data-eurmin="" data-stars="4.2" data-reviews="254" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-zona">Zona Karting (Juneda)</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Circuit%20de%20Juneda%20Torregrossa" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(254 reviews)</small></a></h3>
     <p class="r-meta">Torregrossa–Juneda (N-240 km 77,9) · Outdoor · CRG Honda 270 cc</p>
     <p class="r-line">Cursa Express</p>
@@ -1363,10 +1465,11 @@ a.web{font-weight:600}
     <p class="r-cond">6–10 people</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€35</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€35</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 115 km from Barcelona</span><a class="src" href="https://www.zonakarting.com/paginas/Alquileres+karts" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="zona" data-zone="lleida" data-lat="41.56358" data-lon="0.78755" data-price="45" data-minp="6" data-maxp="" data-track="10" data-eurmin="" data-stars="4.2" data-reviews="254" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-zona">Zona Karting (Juneda)</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Circuit%20de%20Juneda%20Torregrossa" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(254 reviews)</small></a></h3>
     <p class="r-meta">Torregrossa–Juneda (N-240 km 77,9) · Outdoor · CRG Honda 270 cc</p>
     <p class="r-line">Minicursa</p>
@@ -1374,10 +1477,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€45</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 115 km from Barcelona</span><a class="src" href="https://www.zonakarting.com/assets_panell/bower_components/kcfinder/upload//Precios_karting.png" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="zona" data-zone="lleida" data-lat="41.56358" data-lon="0.78755" data-price="55" data-minp="6" data-maxp="" data-track="20" data-eurmin="" data-stars="4.2" data-reviews="254" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-zona">Zona Karting (Juneda)</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Circuit%20de%20Juneda%20Torregrossa" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(254 reviews)</small></a></h3>
     <p class="r-meta">Torregrossa–Juneda (N-240 km 77,9) · Outdoor · CRG Honda 270 cc</p>
     <p class="r-line">Cursa F1</p>
@@ -1385,10 +1489,11 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6</p>
     
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€55</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 115 km from Barcelona</span><a class="src" href="https://www.zonakarting.com/assets_panell/bower_components/kcfinder/upload//Precios_karting.png" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li><li class="res" data-mode="race" data-k="zona" data-zone="lleida" data-lat="41.56358" data-lon="0.78755" data-price="70" data-minp="6" data-maxp="" data-track="12" data-eurmin="" data-stars="4.2" data-reviews="254" hidden>
   <div class="r-main">
+    <span class="badge" hidden></span>
     <h3><a href="#k-zona">Zona Karting (Juneda)</a> <a class="stars" href="https://www.google.com/maps/search/?api=1&amp;query=Circuit%20de%20Juneda%20Torregrossa" target="_blank" rel="noopener nofollow" title="See on Google Maps"><span aria-hidden="true">★</span> 4.2 <small>(254 reviews)</small></a></h3>
     <p class="r-meta">Torregrossa–Juneda (N-240 km 77,9) · Outdoor · CRG Honda 270 cc</p>
     <p class="r-line">Supercursa</p>
@@ -1396,7 +1501,7 @@ a.web{font-weight:600}
     <p class="r-cond">min. 6 · the text says 12 timed minutes, the image says 12 free minutes</p>
     <p class="r-flags"><span class="flag" title="The same site gives two different figures.">conflict</span></p>
   </div>
-  <div class="r-price"><span class="badge" hidden></span><strong>€70</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
+  <div class="r-price"><strong>€70</strong><span class="r-sub">per person</span><span class="r-total"></span></div>
   <div class="r-foot"><span class="dist">≈ 115 km from Barcelona</span><a class="src" href="https://www.zonakarting.com/paginas/Alquileres+karts" target="_blank" rel="noopener nofollow">See prices</a></div>
 </li></ol>
   <p class="empty" hidden>No track matches. Try another area or change the number of people.</p>

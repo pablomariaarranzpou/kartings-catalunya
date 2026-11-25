@@ -98,8 +98,9 @@ a.stars:hover small{text-decoration:underline}
 .r-total{color:var(--ink);font-weight:600}
 .r-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:.86rem;color:var(--muted)}
 .r-foot a.src{margin-left:auto}
-.badge{font-size:.72rem;font-weight:700;letter-spacing:.02em;background:var(--ink);color:var(--bg);border-radius:999px;padding:.2rem .55rem;margin-bottom:4px}
-.res.top .r-price strong{background:linear-gradient(transparent 52%,var(--hi) 52%);color:var(--ink)}
+.badge{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--hi);color:var(--hi-ink);border-radius:6px;padding:.32rem .55rem;margin-bottom:8px}
+.res.top{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:12px -20px;box-shadow:inset 4px 0 0 var(--hi)}
+.res.top + .res{border-top:0}
 a.src{font-size:.82rem;font-weight:600;white-space:nowrap}
 a.src::after{content:" ↗";font-weight:400}
 
@@ -160,7 +161,8 @@ a.web{font-weight:600}
 .tbl .rk{color:var(--muted);width:2.5rem;text-align:left}
 .tbl tbody tr:last-child>*{border-bottom:0}
 .tbl tr.best .hl{font-weight:800}
-.tbl tr.best .hl{background:linear-gradient(transparent 50%,var(--hi) 50%);color:var(--hi-ink)}
+.tbl tr.best .hl{background:var(--hi);color:var(--hi-ink);font-weight:800}
+.tbl tr.best .rk{background:var(--hi);color:var(--hi-ink);font-weight:800}
 .keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:24px;margin-top:1rem}
 .keys p{margin:.35rem 0 0;color:var(--muted);font-size:.95rem}
 
@@ -192,7 +194,7 @@ a.web{font-weight:600}
   .ctl select{min-width:0;width:100%}
   .res{grid-template-columns:1fr}
   .r-price{text-align:left;align-items:flex-start;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
-  .r-price .badge{order:-1;flex-basis:100%;max-width:max-content}
+  .res.top{margin:10px 0;padding:16px}
   .k summary{grid-template-columns:minmax(0,1fr) auto}
   .k-meta{grid-column:1/-1;grid-row:2}
   .k-from{grid-column:2;grid-row:1}
